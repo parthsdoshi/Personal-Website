@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/parthsdoshi/parthsdoshi.github.io#readme",
   "dependencies": {
-    "bootstrap": "^4.0.0-alpha.3"
+    "bootstrap": "^4.0.0-alpha.3",
+    "react": "^15.3.1"
   }
 }
