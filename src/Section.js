@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 class Section extends Component {
     render() {
-        cls = "section";
+        this.cls = "section";
         if (this.props.isFooter) {
-            cls += " is-footer";
+            this.cls += " is-footer";
         }
         return (
-            <section className={cls}>
+            <section className={this.cls}>
                 {this.props.children}
             </section>
         )
