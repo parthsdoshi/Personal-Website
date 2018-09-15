@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.png';
+import logo from './logo_compressed.png';
+import resume from './resume.pdf';
 
 class Navbar extends Component {
     constructor(props) {
@@ -11,7 +12,6 @@ class Navbar extends Component {
     }
 
     componentDidMount() {
-        console.log("navbarBurger event added")
         if (this.navbarBurger.current != null) {
             this.addBurgerEvent(this.navbarBurger.current)
         }
@@ -19,20 +19,21 @@ class Navbar extends Component {
 
     render() {
 
-        this.marginBottomStyle = { marginBottom: "-10em" }
+        let marginBottomStyle = { marginBottom: "-10em" }
+        let marginLeftStyle = { marginLeft: ".3em" }
 
-        this.style = this.marginBottomStyle;
+        let style = marginBottomStyle;
         if (this.props.isFooter) {
-            this.style = null;
+            style = null;
         }
 
         return (
             <div>
-                <nav className="navbar is-transparent" style={this.style}>
+                <nav className={"navbar is-transparent" + (this.props.isFooter ? "" : "")} style={style}>
                     <div className="container">
                         <div className="navbar-brand">
                             <a className="navbar-item">
-                                <img src={logo} alt="Parth Doshi" width="66" height="28" />
+                                <img src={logo} alt="Parth Doshi's logo" width="66" height="28" />
                                 {/*<h2 className="title">*/}
                                 {/*Parth Doshi*/}
                                 {/*</h2>*/}
@@ -51,28 +52,54 @@ class Navbar extends Component {
                             <div className="navbar-end">
                                 {/*<a className="navbar-item">
                                     Work Experience
-                                </a>
-
-                                <a className="navbar-item">
-                                    Projects
                                 </a>*/}
 
+                                <div className={"navbar-item is-hoverable " + (this.props.isFooter ? "has-dropdown-up" : "has-dropdown")}>
+                                    <a className="navbar-link">
+                                        Projects
+                                    </a>
+                                    <div className="navbar-dropdown is-boxed">
+                                        <a className="navbar-item" href="http://mediaq.parthdoshi.com">
+                                            MediaQ
+                                        </a>
+                                        <hr className="navbar-divider" />
+                                        <div className="navbar-item">
+                                            More to come soon :)
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <a className="navbar-item" href="https://github.com/parthsdoshi">
-                                    <a className="button is-link is-rounded is-outlined">
-                                        <span className="icon">
+                                    <div className="button is-link is-rounded is-outlined">
+                                        Github
+                                        <span className="icon" style={marginLeftStyle}>
                                             <i className="fab fa-github"></i>
                                         </span>
-                                    </a>
+                                    </div>
                                 </a>
                                 <a className="navbar-item" href="https://linkedin.com/in/parthsdoshi">
-                                    <a className="button is-link is-rounded is-outlined">
-                                        <i className="fab fa-linkedin"></i>
-                                    </a>
+                                    <div className="button is-link is-rounded is-outlined">
+                                        LinkedIn
+                                        <span className="icon" style={marginLeftStyle}>
+                                            <i className="fab fa-linkedin"></i>
+                                        </span>
+                                    </div>
                                 </a>
                                 <a className="navbar-item" href="mailto:doshi.parth9@gmail.com">
-                                    <a className="button is-link is-rounded is-outlined">
-                                        <i className="fas fa-envelope"></i>
-                                    </a>
+                                    <div className="button is-link is-rounded is-outlined">
+                                        Email
+                                        <span className="icon" style={marginLeftStyle}>
+                                            <i className="fas fa-envelope"></i>
+                                        </span>
+                                    </div>
+                                </a>
+                                <a className="navbar-item" href={resume}>
+                                    <div className="button is-link is-rounded is-outlined">
+                                        Resume
+                                        <span className="icon" style={marginLeftStyle}>
+                                            <i className="fas fa-file"></i>
+                                        </span>
+                                    </div>
                                 </a>
                             </div>
                         </div>

@@ -4,7 +4,6 @@ import HR from './HR';
 import Navbar from './Navbar';
 import Header from './Header';
 import WorkExperience from './WorkExperience';
-import Projects from './Projects';
 
 import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.css';
