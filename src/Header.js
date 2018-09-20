@@ -16,6 +16,11 @@ class Header extends Component {
                     <div className="container">
                         <div className="columns box is-vcentered">
                             <div className="column is-half">
+                                <figure className="image is-1by1">
+                                    <img src={profilePicture}  alt="Parth Doshi in Europe"/>
+                                </figure>
+                            </div>
+                            <div className="column is-half">
                                 <div className="has-text-centered">
                                     <div className="content title">
                                         <p>Hi, I'm Parth. <span role="img" aria-label="Smiling emoji">&#x1F604;</span></p>
@@ -41,11 +46,6 @@ class Header extends Component {
                                         </a>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="column is-half">
-                                <figure className="image is-1by1">
-                                    <img src={profilePicture}  alt="Parth Doshi in Europe"/>
-                                </figure>
                             </div>
                         </div>
                     </div>
