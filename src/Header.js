@@ -14,7 +14,7 @@ class Header extends Component {
             <section className="hero">
                 <div className="hero-body">
                     <div className="container">
-                        <div className="columns box">
+                        <div className="columns box is-vcentered">
                             <div className="column is-half">
                                 <div className="has-text-centered">
                                     <div className="content title">
