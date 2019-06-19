@@ -10,7 +10,7 @@ class Navbar extends Component {
         this.navbarBurger = React.createRef()
         this.emailModal = React.createRef()
 
-        this.email = "doshi.parth9@gmail.com"
+        this.email = "dosparth@gmail.com"
     }
 
     componentDidMount() {
@@ -118,7 +118,7 @@ class Navbar extends Component {
                                             LinkedIn
                                         </a>
                                         <hr className="navbar-divider" />
-                                        <a className="navbar-item" href="mailto:doshi.parth9@gmail.com">
+                                        <a className="navbar-item" href="mailto:dosparth@gmail.com">
                                             Email Me
                                         </a>
                                     </div>
