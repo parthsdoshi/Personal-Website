@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import resume from './ResumeLink';
+
 import logo from './logo_compressed.png';
-import resume from './resume.pdf';
 
 class Navbar extends Component {
     constructor(props) {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CiscoLogo from './Cisco_logo.png';
 import ViptelaLogo from './Viptela_logo.png';
 import PurdueLogo from './Purdue_full_logo.png';
+import MicrosoftLogo from './Microsoft_logo_cropped.png';
 
 class WorkExperience extends Component {
     render() {
@@ -23,6 +24,13 @@ class WorkExperience extends Component {
                 </div>
                 <div className="container" style={addPaddingTop}>
                     <div className="level">
+                        <div className="level-item" style={purdueLogoPadding}>
+                            <a href="https://www.microsoft.com/en-us/">
+                                <figure className="image is-128x128">
+                                    <img src={MicrosoftLogo} alt="Microsoft's logo" />
+                                </figure>
+                            </a>
+                        </div>
                         <div className="level-item" style={purdueLogoPadding}>
                             <a href="https://www.cs.purdue.edu/homes/cs252/">
                                 <figure className="image is-128x128">

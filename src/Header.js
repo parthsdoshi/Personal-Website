@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import resume from './ResumeLink';
 
-import profilePicture from './rsz_profile_picture_square.jpg';
-import resume from './resume.pdf';
+import profilePicture from './ferry_profile_picture_square.png';
 
 class Header extends Component {
     render() {
@@ -17,7 +17,7 @@ class Header extends Component {
                         <div className="columns box is-vcentered">
                             <div className="column is-half">
                                 <figure className="image is-1by1">
-                                    <img src={profilePicture}  alt="Parth Doshi in Europe"/>
+                                    <img class="is-rounded" src={profilePicture}  alt="Parth Doshi on a ferry to BainsBridge Island, WA."/>
                                 </figure>
                             </div>
                             <div className="column is-half">
@@ -27,13 +27,13 @@ class Header extends Component {
                                     </div>
 
                                     <div className="content subtitle" style={this.topPadding}>
-                                        <p>I'm a junior at <span className="has-text-weight-semibold">Purdue University</span> studying <a href="https://www.cs.purdue.edu/undergraduate/curriculum/track_MI.html" className="has-text-link">Computer Science</a> and <a href="http://catalog.purdue.edu/preview_program.php?catoid=9&poid=10329" className="has-text-link">Mathematical Statistics</a>.</p>
+                                        <p>I'm a rising senior at <span className="has-text-weight-semibold">Purdue University</span> studying <a href="https://www.cs.purdue.edu/undergraduate/curriculum/track_MI.html" className="has-text-link">Computer Science</a> and <a href="http://catalog.purdue.edu/preview_program.php?catoid=9&poid=10329" className="has-text-link">Mathematical Statistics</a>.</p>
                                         <p>In the past, I've explored many different areas of Computer Science trying to find what I enjoy. So far I've tried my hand at the following: <span className="has-text-weight-semibold">frontend development, networking, systems, and most recently, data analysis</span>.</p>
                                         {/*<p>
                                             Going forward, I'd like to steer my career towards machine learning and its applications in the field. Towards this goal, I have selected the "Machine Intelligence" track and have picked up a Mathematical Statistics major.
                                         </p>*/}
                                         <p>
-                                            Aside from my professional life, I ballroom dance competitively and listen to a large amount of music.
+                                            Aside from my professional life, I love to rock climb and listen to a large amount of music.
                                         </p>
                                         <p>
                                             If you're interested, there's a lot more information on my resume!
