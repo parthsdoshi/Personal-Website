@@ -7,15 +7,20 @@ class Navbar extends Component {
     constructor(props) {
         super(props);
 
-        this.navbarBurger = React.createRef()
+        if (!this.props.isFooter) {
+            this.navbarBurger = React.createRef()
+        }
+
         this.emailModal = React.createRef()
 
         this.email = "dosparth@gmail.com"
     }
 
     componentDidMount() {
-        if (this.navbarBurger.current != null) {
-            this.addBurgerEvent(this.navbarBurger.current)
+        if (!this.props.isFooter) {
+            if (this.navbarBurger.current != null) {
+                this.addBurgerEvent(this.navbarBurger.current)
+            }
         }
     }
 
@@ -78,11 +83,13 @@ class Navbar extends Component {
                             <strong className="navbar-item is-tagline">
                                 Parth Doshi
                             </strong>
+                            {!this.props.isFooter &&
                             <div ref={this.navbarBurger} className="navbar-burger burger" data-target="navbarMenu">
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </div>
+			    }
                         </div>
 
                         <div id="navbarMenu" className="navbar-menu">
@@ -93,9 +100,12 @@ class Navbar extends Component {
 
                             <div className={"navbar-item is-hoverable " + (this.props.isFooter ? "has-dropdown-up" : "has-dropdown")}>
                                 <a className="navbar-link">
-                                    Active Projects
+                                    Projects
                                 </a>
                                 <div className="navbar-dropdown is-boxed">
+                                    <a className="navbar-item" href="https://github.com/parthsdoshi/fabel">
+                                        Fabel
+                                    </a>
                                     <a className="navbar-item" href="http://mediaq.parthdoshi.com">
                                         MediaQ
                                     </a>
