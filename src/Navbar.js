@@ -26,10 +26,14 @@ class Navbar extends Component {
 
     openEmailModal = () => {
         this.emailModal.current.classList.toggle("is-active")
+        var htmlElement = document.documentElement;
+        htmlElement.classList.add("is-clipped");
     }
     
     closeEmailModal = () => {
         this.emailModal.current.classList.toggle("is-active")
+        var htmlElement = document.documentElement;
+        htmlElement.classList.remove("is-clipped");
     }
 
     copyEmailToClipboard = () => {
@@ -171,7 +175,7 @@ class Navbar extends Component {
                     </div>
                 </nav>
                 <div className="modal" id="emailModal" ref={this.emailModal}>
-                    <div className="modal-background"></div>
+                    <div className="modal-background" onClick={this.closeEmailModal}></div>
                     <div className="modal-card">
                         <header className="modal-card-head">
                             <p className="modal-card-title">Email</p>

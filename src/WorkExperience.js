@@ -47,7 +47,7 @@ class WorkExperience extends Component {
                         </div>
                         <div className="level-item">
                             <a href="https://cisco.com">
-                                <figure className="image is-128x128">
+                                <figure className="image is-96x96">
                                     <img src={CiscoLogo} alt="Cisco's logo" />
                                 </figure>
                             </a>
