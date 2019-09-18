@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Parth Doshi`,
+    description: `My Website`,
+    author: `Parth Doshi`,
+    resume: `https://onedrive.live.com/embed?cid=5FFDC0A7660E0685&resid=5FFDC0A7660E0685%2151359&authkey=AMtGdtUK2iTisSg&em=2`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -24,7 +25,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -1,14 +1,57 @@
 import React from "react"
+import { graphql, Link } from "gatsby"
+import Img from "gatsby-image"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
+import NavbarFooter from "../components/NavbarFooter"
 
-const NotFoundPage = () => (
-  <Layout>
-    <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
-)
+export const cat404Data = graphql`
+  query {
+    placeholderImage: file(relativePath: { eq: "cat_404.jpg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`
+const NotFoundPage = ({ data }) => {
+  let topPadding = {paddingTop: "1.5em"}
+  let marginRightStyle = { marginRight: ".3em" }
 
-export default NotFoundPage
+  return (
+    <NavbarFooter>
+      <SEO title="404: Not found" />
+      <section className="hero">
+        <div className="hero-body">
+          <div className="container">
+            <div className="columns box is-vcentered">
+              <div className="column is-half">
+                <Img fluid={data.placeholderImage.childImageSharp.fluid} alt="Cat hiding under papers imitating a 404 not found." />
+              </div>
+              <div className="column is-half has-text-centered">
+                <div className="content title">
+                  <h1>NOT FOUND</h1>
+                </div>
+                <div className="content subtitle">
+                  <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+                </div>
+                <div style={topPadding}>
+                    <Link className="button is-dark" to="/">
+                      <span className="icon" style={marginRightStyle}>
+                          <i className="fas fa-home"></i>
+                      </span>
+                      Let's go home.
+                    </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </NavbarFooter>
+  )
+}
+
+export default NotFoundPage;

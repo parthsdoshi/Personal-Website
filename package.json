@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "parthsdoshi.github.io",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "My Website",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Parth Doshi <dosparth@gmail.com>",
   "dependencies": {
     "gatsby": "^2.15.16",
     "gatsby-image": "^2.2.19",
@@ -19,15 +19,17 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.10.2",
+    "bulma": "^0.7.5",
     "prettier": "^1.18.2"
   },
   "keywords": [
-    "gatsby"
+    "Parth Doshi"
   ],
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -H 0.0.0.0",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
@@ -35,9 +37,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/parthsdoshi/parthsdoshi.github.io"
   }
 }
