@@ -3,7 +3,7 @@ module.exports = {
     title: `Parth Doshi`,
     description: `My Website`,
     author: `Parth Doshi`,
-    resume: `https://doagga.bn.files.1drv.com/y4mjdSQPZ7X0REWp3IMwSdSU8FP9Y2GnUdC30wAwL3z0s3-PpCt3iGzAjcAsYj5vhmxB0wwlZhoCTHKUp6PYKdP0ew1aC5ZRmmYJD-7qbTtK5Z5kz6if7NZtiU7Xt1GlfwRw-TbYyMIo2lMCi4T-6w_pn8IomEa9oojNlV5RNfVY6_-ENiGkfiLNoDgK0NBteCv/Parth%20Doshi%20Resume.pdf`,
+    resume: `https://onedrive.live.com/embed?cid=5FFDC0A7660E0685&resid=5FFDC0A7660E0685%2151359&authkey=AMtGdtUK2iTisSg&em=2`,
     email: `contact@parthdoshi.com`
   },
   plugins: [
