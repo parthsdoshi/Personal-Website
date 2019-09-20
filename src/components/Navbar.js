@@ -165,7 +165,7 @@ class Navbar extends Component {
                                 </a>
                                 <Link className="navbar-item" to="/resume">
                                     <div className="button is-link is-rounded is-outlined">
-                                        Resume
+                                        Résumé
                                         <span className="icon" style={marginLeftStyle}>
                                             <i className="fas fa-file"></i>
                                         </span>
