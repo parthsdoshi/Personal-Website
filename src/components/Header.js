@@ -39,7 +39,7 @@ const Header = () => {
 
                                 <div style={topPadding}>
                                     <Link className="button is-link" to="/resume">
-                                        Resume
+                                        Résumé
                                     </Link>
                                 </div>
                             </div>
