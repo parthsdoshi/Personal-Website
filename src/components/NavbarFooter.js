@@ -2,15 +2,18 @@ import React from "react"
 import Navbar from "./Navbar";
 import Section from "./Section";
 
-const NavbarFooter = ({ children }) => (
+const NavbarFooter = (props) => (
   <>
     <Section>
       <Navbar />
     </Section>
-    {children}
-    <Section isFooter>
-      <Navbar isFooter />
-    </Section>
+    {props.children}
+    {
+      !props.hideFooter &&
+      <Section isFooter>
+        <Navbar isFooter />
+      </Section>
+    }
   </>
 )
 
