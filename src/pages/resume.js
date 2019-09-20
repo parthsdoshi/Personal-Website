@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 
 import { graphql } from "gatsby";
 import NavbarFooter from "../components/NavbarFooter";
+import SEO from "../components/seo";
 
 const Resume = ({ data }) => {
     const [height, setHeight] = useState("100%")
