@@ -17,6 +17,7 @@ const Resume = ({ data }) => {
 
     return (
         <NavbarFooter hideFooter={true}>
+            <SEO title="Résumé" />
             <iframe src={data.site.siteMetadata.resume} style={{position: "relative", overflowY: "hidden", width: "100%", height: height, border: "none", padding: 0}} title="resume">
                 <a href={data.site.siteMetadata.resume}>
                     Parth Doshi's very interesting résumé. You're seeing this text because you probably don't have javascript enabled!
