@@ -42,6 +42,7 @@ const Navbar = (props) => {
             site {
                 siteMetadata {
                     email
+                    resume
                 }
             }
         }
@@ -95,6 +96,8 @@ const Navbar = (props) => {
     if (props.isFooter) {
         footerStyle = null;
     }
+
+    let downloadResumeLink = site.siteMetadata.resume.replace('embed', 'download')
 
     return (
         <div>
@@ -161,14 +164,26 @@ const Navbar = (props) => {
                                     </span>
                                 </div>
                             </div>
-                            <Link className="navbar-item" to="/resume">
-                                <div className="button is-link is-rounded is-outlined">
-                                    Résumé
-                                    <span className="icon" style={marginLeftStyle}>
-                                        <i className="fas fa-file"></i>
-                                    </span>
-                                </div>
-                            </Link>
+                            {!props.downloadResume &&
+                                <Link className="navbar-item" to="/resume">
+                                    <div className="button is-link is-rounded is-outlined">
+                                        Résumé
+                                        <span className="icon" style={marginLeftStyle}>
+                                            <i className="fas fa-file"></i>
+                                        </span>
+                                    </div>
+                                </Link>
+                            }
+                            {props.downloadResume &&
+                                <a className="navbar-item" href={downloadResumeLink}>
+                                    <div className="button is-link is-rounded is-outlined">
+                                        Download Résumé
+                                        <span className="icon" style={marginLeftStyle}>
+                                            <i className="fas fa-file-download"></i>
+                                        </span>
+                                    </div>
+                                </a>
+                            }
                         </div>
                     </div>
                 </div>

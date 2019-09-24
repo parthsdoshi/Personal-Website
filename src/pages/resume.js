@@ -11,13 +11,17 @@ const Resume = ({ data }) => {
         // 96 is calculated height of header
         setHeight((document.documentElement.clientHeight - 96).toString() + "px", [])
 
+        window.addEventListener('resize', () => {
+            setHeight((document.documentElement.clientHeight - 96).toString() + "px", [])
+        })
+
         return () => {
             document.documentElement.style.overflowY = "auto"
         }
-    })
+    }, [])
 
     return (
-        <NavbarFooter hideFooter={true}>
+        <NavbarFooter hideFooter downloadResume>
             <SEO title="Résumé" />
             <iframe src={data.site.siteMetadata.resume} style={{position: "relative", overflowY: "hidden", width: "100%", height: height, border: "none", padding: 0}} title="resume">
                 <a href={data.site.siteMetadata.resume}>

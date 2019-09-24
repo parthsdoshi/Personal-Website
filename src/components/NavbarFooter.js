@@ -2,14 +2,14 @@ import React from "react"
 import Navbar from "./Navbar";
 import Section from "./Section";
 
-const NavbarFooter = (props) => (
+const NavbarFooter = ({ hideFooter, downloadResume, children }) => (
   <>
     <Section>
-      <Navbar />
+      <Navbar downloadResume={downloadResume} />
     </Section>
-    {props.children}
+    {children}
     {
-      !props.hideFooter &&
+      !hideFooter &&
       <Section isFooter>
         <Navbar isFooter />
       </Section>
