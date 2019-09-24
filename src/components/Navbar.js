@@ -14,7 +14,6 @@ const Navbar = (props) => {
         addBurgerEvent = (e) => {
             // Add a click event on each of them
             e.addEventListener('click', () => {
-
                 // Get the target from the "data-target" attribute
                 const target = e.dataset.target;
                 const $target = document.getElementById(target);
@@ -22,7 +21,6 @@ const Navbar = (props) => {
                 // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
                 e.classList.toggle('is-active');
                 $target.classList.toggle('is-active');
-
             });
         }
     }
@@ -33,7 +31,7 @@ const Navbar = (props) => {
         if (navbarBurger && navbarBurger.current != null) {
             addBurgerEvent(navbarBurger.current)
         }
-    })
+    }, [])
 
     const emailModal = React.createRef()
 

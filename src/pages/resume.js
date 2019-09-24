@@ -9,10 +9,10 @@ const Resume = ({ data }) => {
     useEffect(() => {
         document.documentElement.style.overflowY = "hidden"
         // 96 is calculated height of header
-        setHeight((document.documentElement.clientHeight - 96).toString() + "px", [])
+        setHeight((document.documentElement.clientHeight - 96).toString() + "px")
 
         window.addEventListener('resize', () => {
-            setHeight((document.documentElement.clientHeight - 96).toString() + "px", [])
+            setHeight((document.documentElement.clientHeight - 96).toString() + "px")
         })
 
         return () => {
