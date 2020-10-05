@@ -3,15 +3,24 @@ import CiscoLogo from "../components/CiscoLogo";
 import ViptelaLogo from "../components/ViptelaLogo";
 import PurdueLogo from "../components/PurdueLogo";
 import MicrosoftLogo from "../components/MicrosoftLogo";
+import FathomLogo from "../components/FathomLogo";
 
 const WorkExperience = () => {
     // have to add padding due to different logo sizes...
-    let purdueLogoPadding = {
-        paddingTop: "2em"
+    let addPaddingTop = {
+        paddingTop: "0em"
     };
 
-    let addPaddingTop = {
-        paddingTop: "2em"
+    let purdueLogoPadding = {
+        paddingTop: "3em"
+    };
+
+    let msLogoPadding = {
+        paddingTop: "2.5em"
+    };
+
+    let fathomLogoPadding = {
+        paddingTop: "4.2em"
     };
 
     return (
@@ -23,7 +32,14 @@ const WorkExperience = () => {
             </div>
             <div className="container" style={addPaddingTop}>
                 <div className="level">
-                    <div className="level-item" style={purdueLogoPadding}>
+                    <div className="level-item" style={fathomLogoPadding}>
+                        <a href="https://www.fathomhealth.com">
+                            <figure className="image is-128x128">
+                                <FathomLogo />
+                            </figure>
+                        </a>
+                    </div>
+                    <div className="level-item" style={msLogoPadding}>
                         <a href="https://www.microsoft.com/en-us/">
                             <figure className="image is-128x128">
                                 <MicrosoftLogo />
