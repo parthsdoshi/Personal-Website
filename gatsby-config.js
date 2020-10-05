@@ -1,5 +1,5 @@
 const path = require('path')
-const REPO_ABSOLUTE_PATH = path.join(process.cwd(), '../..')
+const REPO_ABSOLUTE_PATH = path.join(process.cwd(), '')
 
 module.exports = {
   siteMetadata: {

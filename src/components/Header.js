@@ -3,30 +3,34 @@ import React from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import { useRemarkForm } from 'gatsby-tinacms-remark';
 import { usePlugin } from 'tinacms';
-import { InlineForm, InlineTextField, InlineTextarea } from 'react-tinacms-inline';
-import { InlineWysiwyg } from 'react-tinacms-editor';
+import { InlineForm, InlineTextarea } from 'react-tinacms-inline';
 
 import ProfilePicture from './ProfilePhoto';
+import DevelopInlineWysiwyg from './DevelopInlineWysiwyg';
 
 const Header = () => {
     // The below query id was taken from the GraphQL explorer to grab only the header info.
+    // We need both the TinaRemark fragment as well as the frontmatter and html fields.
+    // This is because the TinaRemark fragment is only used to populate fields needed for inline editing.
+    // The frontmatter and html fields are what are used in production to create the static queries.
     const data = useStaticQuery(graphql`
         {
             file(base: {eq: "header.md"}) {
                 childMarkdownRemark {
+                    ...TinaRemark
                     frontmatter {
                         title
                         date
                     }
-                    ...TinaRemark
+                    html
                 }
             }
         }
     `)
-    const [_headerData, form] = useRemarkForm(data.file.childMarkdownRemark)
+    const [headerData, form] = useRemarkForm(data.file.childMarkdownRemark)
     usePlugin(form)
 
-    let topPadding = {paddingTop: "1.5em"}
+    let topPadding = { paddingTop: "1.5em" }
 
     return (
         <InlineForm form={form}>
@@ -36,7 +40,9 @@ const Header = () => {
                         <div className="columns box is-vcentered">
                             <div className="column is-half">
                                 <figure className="image">
-                                    <ProfilePicture imgStyle={{borderRadius: "1%"}} />
+                                    <ProfilePicture
+                                        imgStyle={{ borderRadius: "1%" }}
+                                    />
                                 </figure>
                             </div>
                             <div className="column is-half">
@@ -44,11 +50,23 @@ const Header = () => {
                                     <div className="content title">
                                         <InlineTextarea name="rawFrontmatter.title" />
                                     </div>
-                                    <div className="content subtitle" style={topPadding}>
-                                        <InlineWysiwyg name="rawMarkdownBody" />
+                                    <div
+                                        className="content subtitle"
+                                        style={topPadding}
+                                    >
+                                        <DevelopInlineWysiwyg name="rawMarkdownBody" sticky={false}>
+                                            <div
+                                                dangerouslySetInnerHTML={{
+                                                    __html: headerData.html
+                                                }}
+                                            />
+                                        </DevelopInlineWysiwyg>
                                     </div>
                                     <div style={topPadding}>
-                                        <Link className="button is-link" to="/resume">
+                                        <Link
+                                            className="button is-link"
+                                            to="/resume"
+                                        >
                                             Résumé
                                         </Link>
                                     </div>
@@ -62,4 +80,4 @@ const Header = () => {
     )
 }
 
-export default Header;
+export default Header
