@@ -31,7 +31,7 @@ const Navbar = (props) => {
         if (navbarBurger && navbarBurger.current != null) {
             addBurgerEvent(navbarBurger.current)
         }
-    }, [])
+    }, [navbarBurger, addBurgerEvent])
 
     const emailModal = React.createRef()
 

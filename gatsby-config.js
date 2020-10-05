@@ -3,8 +3,8 @@ module.exports = {
     title: `Parth Doshi`,
     description: `My Website`,
     author: `Parth Doshi`,
-    resume: `https://onedrive.live.com/embed?cid=5FFDC0A7660E0685&resid=5FFDC0A7660E0685%2151359&authkey=AMtGdtUK2iTisSg&em=2`,
-    email: `contact@parthdoshi.com`
+    resume: `https://onedrive.live.com/embed?cid=5FFDC0A7660E0685&resid=5FFDC0A7660E0685%2151809&authkey=AK5Q5ppEccrGH2M&em=2`,
+    email: `contact@parthdoshi.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -32,5 +32,13 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data`
+      }
+    }
   ],
 }
