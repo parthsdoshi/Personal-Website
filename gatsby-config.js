@@ -1,3 +1,6 @@
+const path = require('path')
+const REPO_ABSOLUTE_PATH = path.join(process.cwd(), '')
+
 module.exports = {
   siteMetadata: {
     title: `Parth Doshi`,
@@ -32,13 +35,36 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
         path: `${__dirname}/src/data`
       }
-    }
+    },
+    `gatsby-transformer-remark`,
+    {
+      resolve: "gatsby-plugin-tinacms",
+      options: {
+        enabled: process.env.NODE_ENV !== "production",
+        sidebar: {
+          position: "displace",
+        },
+        plugins: [
+          {
+            resolve: "gatsby-tinacms-git",
+            options: {
+              pathToRepo: REPO_ABSOLUTE_PATH,
+              pathToContent: '/',
+              defaultCommitMessage: 'Edited with CMS',
+              defaultCommitName: 'CMS',
+              defaultCommitEmail: 'cms@parthdoshi.com',
+              pushOnCommit: false,
+            }
+          },
+          "gatsby-tinacms-remark"
+        ],
+      },
+    },
   ],
 }

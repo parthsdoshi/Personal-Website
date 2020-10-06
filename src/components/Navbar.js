@@ -154,7 +154,7 @@ const Navbar = (props) => {
                                     </span>
                                 </div>
                             </a>
-                            <div className="navbar-item" onClick={openEmailModal}>
+                            <div className="navbar-item" role="button" onClick={openEmailModal} aria-label="Open Email Modal">
                                 <div className="button is-link is-rounded is-outlined">
                                     Email
                                     <span className="icon" style={marginLeftStyle}>
@@ -187,7 +187,7 @@ const Navbar = (props) => {
                 </div>
             </nav>
             <div className="modal" id="emailModal" ref={emailModal}>
-                <div className="modal-background" onClick={closeEmailModal}></div>
+                <div className="modal-background" role="button" onClick={closeEmailModal} aria-label="Close Email Modal"></div>
                 <div className="modal-card">
                     <header className="modal-card-head">
                         <p className="modal-card-title">Email</p>
