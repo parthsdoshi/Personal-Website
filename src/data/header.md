@@ -1,6 +1,8 @@
 ---
 title: "Hi, my name is Parth. \U0001F604"
-date: '2020-10-04'
+date: '2020-10-04T00:00:00.000Z'
+author: Parth Doshi
+slug: header
 ---
 I'm a software engineer at [**Fathom Health**](https://fathomhealth.com) working on using maching learning to automate medical coding.
 

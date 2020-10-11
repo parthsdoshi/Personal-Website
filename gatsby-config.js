@@ -47,9 +47,7 @@ module.exports = {
       resolve: "gatsby-plugin-tinacms",
       options: {
         enabled: process.env.NODE_ENV !== "production",
-        sidebar: {
-          position: "displace",
-        },
+        toolbar: true,
         plugins: [
           {
             resolve: "gatsby-tinacms-git",
@@ -66,5 +64,13 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `chef`,
+        path: `${__dirname}/src/content/chef`
+      }
+    },
+    `gatsby-plugin-sass`
   ],
 }

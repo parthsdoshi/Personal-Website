@@ -1,7 +1,7 @@
 import React from "react"
 import { useCMS } from "tinacms"
 
-// This module allows us to only import react-tinacms-editor if the Tina is actually in use.
+// This module allows us to only import react-tinacms-editor if Tina is actually in use.
 
 function DevelopInlineWysiwyg(props) {
     const cms = useCMS()
@@ -11,7 +11,7 @@ function DevelopInlineWysiwyg(props) {
         if (!InlineWysiwyg && cms.enabled) {
             import("react-tinacms-editor").then(setEditor)
         }
-    }, [cms.enabled])
+    }, [cms.enabled, InlineWysiwyg])
 
     if (InlineWysiwyg) {
         return <InlineWysiwyg {...props} />

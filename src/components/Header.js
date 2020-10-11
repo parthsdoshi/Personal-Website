@@ -14,20 +14,18 @@ const Header = () => {
     // This is because the TinaRemark fragment is only used to populate fields needed for inline editing.
     // The frontmatter and html fields are what are used in production to create the static queries.
     const data = useStaticQuery(graphql`
-        {
-            file(base: {eq: "header.md"}) {
-                childMarkdownRemark {
-                    ...TinaRemark
-                    frontmatter {
-                        title
-                        date
-                    }
-                    html
+        query {
+            markdownRemark(fileRelativePath: { eq: "/src/data/header.md" }) {
+                ...TinaRemark
+                frontmatter {
+                    title
+                    date
                 }
+                html
             }
         }
     `)
-    const [headerData, form] = useRemarkForm(data.file.childMarkdownRemark)
+    const [headerData, form] = useRemarkForm(data.markdownRemark)
     usePlugin(form)
 
     let topPadding = { paddingTop: "1.5em" }
@@ -54,10 +52,13 @@ const Header = () => {
                                         className="content subtitle"
                                         style={topPadding}
                                     >
-                                        <DevelopInlineWysiwyg name="rawMarkdownBody" sticky={false}>
+                                        <DevelopInlineWysiwyg
+                                            name="rawMarkdownBody"
+                                            sticky={false}
+                                        >
                                             <div
                                                 dangerouslySetInnerHTML={{
-                                                    __html: headerData.html
+                                                    __html: headerData.html,
                                                 }}
                                             />
                                         </DevelopInlineWysiwyg>

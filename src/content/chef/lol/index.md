@@ -1,0 +1,7 @@
+---
+title: lol
+date: '2020-10-11T09:27:13.733Z'
+author: Parth Doshi
+slug: lol
+---
+Add content here.
