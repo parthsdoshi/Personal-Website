@@ -74,6 +74,7 @@ const ChefPage = () => {
             })
         }
     }, [cms.enabled, cms.plugins])
+    console.log(cms.media)
 
     return (
         <NavbarFooter hideFooter>
