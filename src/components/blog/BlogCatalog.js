@@ -14,6 +14,7 @@ const BlogCatalog = () => {
             ) {
                 edges {
                     node {
+                        id
                         frontmatter {
                             title
                             date
@@ -32,7 +33,7 @@ const BlogCatalog = () => {
         <Section>
             <div className="columns is-multiline is-mobile">
                 {data.allMarkdownRemark.edges.map(({ node }) => (
-                    <div className="column is-one-third">
+                    <div className="column is-one-third" key={node.id}>
                         <Link to={`/chef/${node.frontmatter.slug}`}>
                             <div className="card" style={fullCard}>
                                 <div className="card-image">

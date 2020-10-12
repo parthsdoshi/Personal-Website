@@ -26,7 +26,7 @@ const MicrosoftLogo = () => {
     }
   `)
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} alt="A picture of Microsoft's logo." />
+  return <Img fluid={data.placeholderImage.childImageSharp.fluid} alt="Microsoft's logo." />
 }
 
 export default MicrosoftLogo;

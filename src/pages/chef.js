@@ -6,7 +6,7 @@ import NavbarFooter from "../components/NavbarFooter"
 import SEO from "../components/seo"
 import BlogCatalog from "../components/blog/BlogCatalog"
 
-import { DEFAULT_AUTHOR, DEFAULT_PATH } from "../shared/chef"
+import { DEFAULT_AUTHOR, DEFAULT_PATH, DEFAULT_TITLEIMAGE } from "../shared/chef"
 
 function createBlogPostSlug(form) {
     // Normalizes slug for a human-readable uri.
@@ -36,7 +36,6 @@ function BlogPostCreator(RemarkCreatorPlugin) {
                 component: "text",
                 label: "Author",
                 description: `Who wrote this? The default author is ${DEFAULT_AUTHOR}.`,
-                default: `${DEFAULT_AUTHOR}`
             },
             {
                 name: "slug",
@@ -53,6 +52,7 @@ function BlogPostCreator(RemarkCreatorPlugin) {
         },
         frontmatter: form => ({
             title: form.title,
+            titleImage: null,
             date: (form.date ? form.date : new Date()).toISOString(),
             author: form.author ? form.author : "Parth Doshi",
             slug: createBlogPostSlug(form),
@@ -74,7 +74,6 @@ const ChefPage = () => {
             })
         }
     }, [cms.enabled, cms.plugins])
-    console.log(cms.media)
 
     return (
         <NavbarFooter hideFooter>

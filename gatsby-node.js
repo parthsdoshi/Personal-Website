@@ -15,6 +15,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   
       type Frontmatter {
         title: String
+        titleImage: String
         date: Date
         author: String
         slug: String

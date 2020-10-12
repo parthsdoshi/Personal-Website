@@ -23,10 +23,10 @@ function join(/* path segments */) {
     if (parts[0] === "") newParts.unshift("");
     // Turn back into a single string path.
     return newParts.join("/") || (newParts.length ? "/" : ".");
-  }
+}
   
-  // A simple function to get the dirname of a path
-  // Trailing slashes are ignored. Leading slash is preserved.
-  function dirname(path) {
-    return join(path, "..");
-  }
+// A simple function to get the dirname of a path
+// Trailing slashes are ignored. Leading slash is preserved.
+function dirname(path) {
+  return join(path, "..");
+}

@@ -1,8 +1,21 @@
 import React from "react"
-import logo from '../images/fathom_health.svg'
+import { useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 
 const FathomLogo = () => {
-  return <img src={logo} alt="Fathom Health's logo." />
+  const data = useStaticQuery(graphql`
+    query {
+      placeholderImage: file(relativePath: { eq: "fathom_health.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+
+  return <Img fluid={data.placeholderImage.childImageSharp.fluid} alt="Fathom Health's logo." />
 }
 
 export default FathomLogo;
