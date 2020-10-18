@@ -25,7 +25,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
     const { createPage } = actions
-    const blogPostTemplate = path.resolve(`src/components/blog/BlogTemplate.js`)
+    const blogPostTemplate = path.resolve(`src/templates/blog/BlogTemplate.js`)
 
     // Take the chef path, grab any folder (each post is a folder), grab any file in that folder
     const blogContentPath = path.join(DEFAULT_PATH, "*", "*")

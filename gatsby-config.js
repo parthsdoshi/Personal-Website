@@ -56,8 +56,8 @@ module.exports = {
               pathToContent: '/',
               defaultCommitMessage: 'Edited with CMS',
               defaultCommitName: 'CMS',
-              defaultCommitEmail: 'cms@parthdoshi.com',
-              pushOnCommit: false,
+              defaultCommitEmail: 'doshi.parth9@gmail.com',
+              pushOnCommit: true,
             }
           },
           "gatsby-tinacms-remark"

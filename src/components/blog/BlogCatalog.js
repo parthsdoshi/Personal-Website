@@ -35,7 +35,6 @@ const BlogCatalog = () => {
             }
         }
     `)
-    console.log(data.allMarkdownRemark.edges)
 
     let fullCard = { height: "100%" }
     return (

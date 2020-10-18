@@ -52,7 +52,7 @@ function BlogPostCreator(RemarkCreatorPlugin) {
         },
         frontmatter: form => ({
             title: form.title,
-            titleImage: "../../images/placeholder_1280x960.png",
+            titleImage: "../../../images/placeholder_1280x960.png",
             date: (form.date ? form.date : new Date()).toISOString(),
             author: form.author ? form.author : "Parth Doshi",
             slug: createBlogPostSlug(form),
