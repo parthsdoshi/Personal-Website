@@ -6,4 +6,4 @@ date: '2020-10-18T07:52:30.749Z'
 author: Parth Doshi
 slug: New-post
 ---
-New conten
+New content
