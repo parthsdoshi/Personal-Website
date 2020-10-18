@@ -1,6 +1,7 @@
 ---
 title: "Hi, my name is Parth. \U0001F604"
 titleImage: ../images/ferry_profile_picture_square.png
+authorImage: ../images/placeholder_96x96.png
 date: '2020-10-04T00:00:00.000Z'
 author: Parth Doshi
 slug: header

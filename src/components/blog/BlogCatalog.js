@@ -28,6 +28,13 @@ const BlogCatalog = () => {
                                     }
                                 }
                             }
+                            authorImage {
+                                childImageSharp {
+                                    fluid {
+                                        ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                                    }
+                                }
+                            }
                         }
                         excerpt
                     }
@@ -46,21 +53,14 @@ const BlogCatalog = () => {
                             <div className="card" style={fullCard}>
                                 <div className="card-image">
                                     <figure className="image">
-                                        {
-                                            node.frontmatter.titleImage ? 
-                                            <Img fluid={node.frontmatter.titleImage.childImageSharp.fluid} alt="food-image" /> : 
-                                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
-                                        }
+                                        <Img fluid={node.frontmatter.titleImage.childImageSharp.fluid} alt="food-image" />
                                     </figure>
                                 </div>
                                 <div className="card-content">
                                     <div className="media">
                                         <div className="media-left">
-                                            <figure className="image is-48x48">
-                                                <img
-                                                    src="https://bulma.io/images/placeholders/96x96.png"
-                                                    alt="Placeholder image"
-                                                />
+                                            <figure className="image is-96x96">
+                                                <Img fluid={node.frontmatter.authorImage.childImageSharp.fluid} alt="author-image" />
                                             </figure>
                                         </div>
                                         <div className="media-content">
