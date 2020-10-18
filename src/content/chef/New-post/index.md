@@ -8,8 +8,16 @@ slug: New-post
 ---
 New content
 
-picture: 
+picture:
 
 lol
+
+hi
+
+hi
+
+hi
+
+hi
 
 hi
