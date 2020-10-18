@@ -8,7 +8,7 @@ slug: New-post
 ---
 New content
 
-picture:
+picture: ![](IMG_3859.jpeg)
 
 lol
 
