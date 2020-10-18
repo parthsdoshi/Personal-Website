@@ -45,7 +45,7 @@ const BlogTemplate = ({ data }) => {
                         <section className="hero is-fullheight">
                             <div className="hero-head">
                                 <PaddedSection style={{backgroundColor: "white"}} isnavbar>
-                                    <Navbar downloadResume={false} />
+                                    <Navbar downloadResume={false} hideChefNotification/>
                                 </PaddedSection>
                                 <PaddedSection>
                                     <Link to="/chef">

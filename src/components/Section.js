@@ -26,6 +26,12 @@ const PaddedSection = styled(Section)`
     ${({ paddingLeft }) => (paddingLeft) && css`
         padding-left: ${paddingLeft};
     `}
+    ${({ paddingBottom }) => (paddingBottom) && css`
+        padding-bottom: ${paddingBottom};
+    `}
+    ${({ paddingTop }) => (paddingTop) && css`
+        padding-top: ${paddingTop};
+    `}
 `
 
 export default PaddedSection;

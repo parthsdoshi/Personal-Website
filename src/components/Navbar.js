@@ -207,6 +207,11 @@ const Navbar = (props) => {
                     </footer>
                 </div>
             </div>
+            {!props.hideChefNotification && <Link to="/chef">
+                <div class="notification is-link">
+                    While you're here, check out my brand new food blog! It's got some delicious food and some great pictures. I'd love to hear any criticism too :)
+                </div>
+            </Link>}
         </div>
     )
 }

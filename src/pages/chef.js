@@ -77,7 +77,7 @@ const ChefPage = () => {
     }, [cms.enabled, cms.plugins])
 
     return (
-        <NavbarFooter hideFooter>
+        <NavbarFooter hideFooter hideChefNotification>
             <SEO title="Food" />
             <BlogCatalog />
         </NavbarFooter>
