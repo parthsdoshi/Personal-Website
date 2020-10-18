@@ -8,10 +8,6 @@ slug: New-post
 ---
 New content
 
-picture:
-
-                                                                                                      ![]()![](IMG_3859.jpeg)
+picture: [](IMG_3859.jpeg)
 
 lol
-
- 
