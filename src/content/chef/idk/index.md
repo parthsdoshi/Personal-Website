@@ -5,8 +5,6 @@ date: '2020-10-12T08:23:58.607Z'
 author: Parth Doshi
 slug: idk
 ---
-Hi I'm Parth
-
 Recipe
 
 * hi
