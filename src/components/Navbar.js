@@ -87,19 +87,13 @@ const Navbar = (props) => {
         }
     }
 
-    const marginBottomStyle = { marginBottom: "-10em" }
     const marginLeftStyle = { marginLeft: ".3em" }
-
-    let footerStyle = marginBottomStyle;
-    if (props.isFooter) {
-        footerStyle = null;
-    }
 
     let downloadResumeLink = site.siteMetadata.resume.replace('embed', 'download')
 
     return (
-        <div>
-            <nav className={"navbar is-transparent" + (props.isFooter ? "" : "")} style={footerStyle}>
+        <div style={props.style}>
+            <nav className={"navbar is-transparent" + (props.isFooter ? "" : "")}>
                 <div className="container">
                     <div className="navbar-brand">
                         <Link className="navbar-item" to="/">

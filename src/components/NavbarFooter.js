@@ -1,20 +1,20 @@
 import React from "react"
 import Navbar from "./Navbar";
-import Section from "./Section";
+import PaddedSection from "./Section";
 
-const NavbarFooter = ({ hideFooter, downloadResume, children }) => (
-  <>
-    <Section>
+const NavbarFooter = ({ hideFooter, downloadResume, children, style }) => (
+  <div style={style}>
+    <PaddedSection isnavbar>
       <Navbar downloadResume={downloadResume} />
-    </Section>
+    </PaddedSection>
     {children}
     {
       !hideFooter &&
-      <Section isFooter>
+      <PaddedSection isnavbar isFooter>
         <Navbar isFooter />
-      </Section>
+      </PaddedSection>
     }
-  </>
+  </div>
 )
 
 export default NavbarFooter;

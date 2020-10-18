@@ -19,7 +19,7 @@ const ProfilePhoto = (props) => {
       placeholderImage: file(relativePath: { eq: "ferry_profile_picture_square.png" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }

@@ -19,7 +19,7 @@ const ViptelaLogo = () => {
       placeholderImage: file(relativePath: { eq: "Viptela_logo.png" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }

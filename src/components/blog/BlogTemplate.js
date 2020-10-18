@@ -2,94 +2,78 @@ import React from "react"
 import { useRemarkForm } from 'gatsby-tinacms-remark';
 import { usePlugin, useCMS } from 'tinacms';
 import { graphql } from "gatsby";
-import { InlineForm, InlineTextarea, InlineImage } from 'react-tinacms-inline';
-import Img from "gatsby-image"
+import { InlineForm, InlineTextarea } from 'react-tinacms-inline';
+import styled  from 'styled-components'
 
-import NavbarFooter from "../NavbarFooter"
-import Section from "../Section"
+import Navbar from "../Navbar";
+import PaddedSection from "../Section"
 import DevelopInlineWysiwyg from '../DevelopInlineWysiwyg';
+import NoOverflowBackgroundImage from '../NoOverflowBackgroundImage'
+import BlogInlineImage from './BlogInlineImage'
 
-const BlogTemplate = ({ data }) => {
+
+const NegativePaddingDiv = styled.div`
+    margin-top: -40vh;
+`
+
+const BlogTemplate = ({ data, className }) => {
     const cms = useCMS()
     const [blogData, form] = useRemarkForm(data.markdownRemark)
     usePlugin(form)
     return (
-        <NavbarFooter hideFooter={true}>
-            <InlineForm form={form}>
-                <Section>
-                    <div className="card">
-                        <div className="card-image">
-                            <div className="columns">
-                                <div className="column">
-                                    <InlineImage
-                                        name="rawFrontmatter.titleImage"
-                                        parse={media => {
-                                            console.log(media.filename ? `./${media.filename}` : null)
-                                            return media.filename ? `./${media.filename}` : null
-                                        }}
-                                        uploadDir={blogPost => {
-                                            const postPathParts = blogPost.initialValues.fileRelativePath.split(
-                                              '/'
-                                            )
-                                            const postDirectory = postPathParts
-                                              .splice(0, postPathParts.length - 1)
-                                              .join('/')
-                                            console.log(postDirectory)
-                                            return postDirectory
-                                        }}
-                                        previewSrc={(fieldValue, fieldPath, formValues) =>
-                                            formValues.frontmatter.titleImage.childImageSharp.fluid.src
-                                        }
-                                        focusRing={false}
-                                        alt="food-image"
-                                    >
-                                        {props => {
-                                            console.log(props)
-                                            return (
-                                            <Img
-                                                fluid={
-                                                    cms.enabled
-                                                        ? props.src
-                                                        : blogData.frontmatter.titleImage.childImageSharp.fluid
-                                                }
-                                                {...props}
-                                            />)
-                                        }}
-                                    </InlineImage>
-                                    {/* <figure className="image is-2by1">
-                                        <img
-                                            src="https://bulma.io/images/placeholders/1280x960.png"
-                                            alt="Placeholder image"
-                                        />
-                                    </figure> */}
-                                </div>
-                                <div className="column is-one-third">
-                                    Recipe here
-                                </div>
+        <InlineForm form={form}>
+            <BlogInlineImage
+                name="rawFrontmatter.titleImage"
+                rawImage={blogData.rawFrontmatter.titleImage}
+                previewSrc={formValues => {
+                    return (formValues.frontmatter.titleImage.childImageSharp.fluid)
+                }}
+                alt="food-image"
+                blogDataPath={blogData.fileRelativePath}
+            >
+                {({ src }) => (
+                    <NoOverflowBackgroundImage 
+                        className={className} 
+                        fluid={
+                            cms.enabled ? src : blogData.frontmatter.titleImage.childImageSharp.fluid
+                        }>
+                        <section className="hero is-fullheight">
+                            <div className="hero-head">
+                                <PaddedSection style={{backgroundColor: "white"}} isnavbar>
+                                    <Navbar downloadResume={false} />
+                                </PaddedSection>
                             </div>
-                        </div>
-                        <div className="card-content">
+                        </section>
+                    </NoOverflowBackgroundImage>
+                )}
+            </BlogInlineImage>
+            <NegativePaddingDiv>
+                <PaddedSection paddingLeft="6rem" paddingRight="6rem">
+                    <div class="card">
+                        <div class="card-content">
                             <div className="media">
-                                <div className="media-left">
-                                    <figure className="image is-48x48">
-                                        <img
-                                            src="https://bulma.io/images/placeholders/96x96.png"
-                                            alt="Placeholder image"
-                                        />
+                                <div class="media-left">
+                                    <figure class="image is-96x96">
+                                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image" />
                                     </figure>
                                 </div>
-                                <div className="media-content">
-                                    <div className="title is-4">
+                                <div class="media-content">
+                                    <p class="title is-4">
                                         <InlineTextarea name="rawFrontmatter.title" />
-                                    </div>
-                                    <div className="subtitle is-6">
-                                        <InlineTextarea name="rawFrontmatter.author" className="subtitle is-6"/>
-                                    </div>
+                                    </p>
+                                    <p class="subtitle is-5">
+                                        <InlineTextarea name="rawFrontmatter.author" />
+                                    </p>
+                                    <p class="subtitle is-6">
+                                        {new Date(blogData.frontmatter.date).toDateString()}
+                                    </p>
                                 </div>
                             </div>
-
-                            <div className="content">
-                                <DevelopInlineWysiwyg name="rawMarkdownBody" sticky={true}>
+                            <div class="content">
+                                <DevelopInlineWysiwyg
+                                    name="rawMarkdownBody"
+                                    sticky={false}
+                                >
                                     <div
                                         dangerouslySetInnerHTML={{
                                             __html: blogData.html,
@@ -98,27 +82,39 @@ const BlogTemplate = ({ data }) => {
                                 </DevelopInlineWysiwyg>
                             </div>
                         </div>
+                        <footer class="card-footer">
+                            <a href="#" class="card-footer-item">Twitter</a>
+                            <a href="#" class="card-footer-item">FB</a>
+                            <a href="#" class="card-footer-item">Reddit</a>
+                        </footer>
                     </div>
-                </Section>
-            </InlineForm>
-        </NavbarFooter>
+                </PaddedSection>
+            </NegativePaddingDiv>
+        </InlineForm>
     )
 }
-
-export default BlogTemplate
 
 export const blogQuery = graphql`
     query chefBlogPost($id: String) {
         markdownRemark(id: { eq: $id }) {
             ...TinaRemark
             frontmatter {
-                titleImage
+                titleImage {
+                    childImageSharp {
+                        fluid {
+                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                        }
+                    }
+                }
                 title
                 date
                 author
                 slug
             }
             html
+            fileRelativePath
         }
     }
 `
+
+export default BlogTemplate;

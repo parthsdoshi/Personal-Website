@@ -19,7 +19,7 @@ const CiscoLogo = () => {
       placeholderImage: file(relativePath: { eq: "Cisco_logo.png" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }

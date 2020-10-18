@@ -1,7 +1,8 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from 'gatsby';
+import Img from "gatsby-image"
 
-import Section from "../Section"
+import PaddedSection from "../Section"
 
 const BlogCatalog = () => {
     // Due to constraints of `useStaticQuery`, we cannot import DEFAULT_PATH from common/chef and use it here :(
@@ -20,6 +21,13 @@ const BlogCatalog = () => {
                             date
                             author
                             slug
+                            titleImage {
+                                childImageSharp {
+                                    fluid {
+                                        ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                                    }
+                                }
+                            }
                         }
                         excerpt
                     }
@@ -27,21 +35,23 @@ const BlogCatalog = () => {
             }
         }
     `)
+    console.log(data.allMarkdownRemark.edges)
 
     let fullCard = { height: "100%" }
     return (
-        <Section>
+        <PaddedSection>
             <div className="columns is-multiline is-mobile">
                 {data.allMarkdownRemark.edges.map(({ node }) => (
                     <div className="column is-one-third" key={node.id}>
                         <Link to={`/chef/${node.frontmatter.slug}`}>
                             <div className="card" style={fullCard}>
                                 <div className="card-image">
-                                    <figure className="image is-4by3">
-                                        <img
-                                            src="https://bulma.io/images/placeholders/1280x960.png"
-                                            alt="Placeholder image"
-                                        />
+                                    <figure className="image">
+                                        {
+                                            node.frontmatter.titleImage ? 
+                                            <Img fluid={node.frontmatter.titleImage.childImageSharp.fluid} alt="food-image" /> : 
+                                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
+                                        }
                                     </figure>
                                 </div>
                                 <div className="card-content">
@@ -84,7 +94,7 @@ const BlogCatalog = () => {
                     </div>
                 ))}
             </div>
-        </Section>
+        </PaddedSection>
     )
 }
 

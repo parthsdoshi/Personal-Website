@@ -19,7 +19,7 @@ const PurdueLogo = () => {
       placeholderImage: file(relativePath: { eq: "Purdue_full_logo.png" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }

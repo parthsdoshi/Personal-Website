@@ -19,7 +19,7 @@ const MicrosoftLogo = () => {
       placeholderImage: file(relativePath: { eq: "Microsoft_logo_cropped.png" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }

@@ -71,6 +71,8 @@ module.exports = {
         path: `${__dirname}/src/content/chef`
       }
     },
-    `gatsby-plugin-sass`
+    `gatsby-plugin-sass`,
+    'gatsby-background-image',
+    `gatsby-plugin-styled-components`,
   ],
 }

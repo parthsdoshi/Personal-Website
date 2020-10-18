@@ -2,7 +2,7 @@ import React from "react"
 
 import SEO from "../components/seo"
 
-import Section from "../components/Section";
+import PaddedSection from "../components/Section";
 import HR from "../components/HR";
 import Header from "../components/Header";
 import WorkExperience from "../components/WorkExperience";
@@ -11,17 +11,17 @@ import NavbarFooter from "../components/NavbarFooter";
 const IndexPage = () => (
   <NavbarFooter>
     <SEO title="Home" />
-    <Section>
+    <PaddedSection>
       <Header />
-    </Section>
+    </PaddedSection>
     <HR />
-    <Section>
+    <PaddedSection>
       <WorkExperience />
-    </Section>
+    </PaddedSection>
     {/*<HR />
-    <Section>
+    <PaddedSection>
       <Projects />
-    </Section>*/}
+    </PaddedSection>*/}
     <HR />
   </NavbarFooter>
 )

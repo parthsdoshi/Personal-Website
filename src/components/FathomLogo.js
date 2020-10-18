@@ -8,7 +8,7 @@ const FathomLogo = () => {
       placeholderImage: file(relativePath: { eq: "fathom_health.png" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }

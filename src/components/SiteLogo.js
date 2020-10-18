@@ -19,7 +19,7 @@ const SiteLogo = () => {
       placeholderImage: file(relativePath: { eq: "logo_compressed.png" }) {
         childImageSharp {
           fixed(width: 42) {
-            ...GatsbyImageSharpFixed
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
           }
         }
       }
