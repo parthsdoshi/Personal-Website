@@ -46,7 +46,7 @@ const BlogCatalog = () => {
     let fullCard = { height: "100%" }
     return (
         <PaddedSection>
-            <div className="columns is-multiline is-mobile">
+            <div className="columns is-multiline">
                 {data.allMarkdownRemark.edges.map(({ node }) => (
                     <div className="column is-one-third" key={node.id}>
                         <Link to={`/chef/${node.frontmatter.slug}`}>
