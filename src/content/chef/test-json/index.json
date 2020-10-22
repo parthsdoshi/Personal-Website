@@ -7,12 +7,12 @@
   "slug": "test-json",
   "blocks": [
     {
-      "_template": "markdown",
-      "content": "Add content here.\n\nnope\n\n# whoa"
-    },
-    {
       "_template": "image",
       "image": "../../../images/placeholder_1280x960.png"
+    },
+    {
+      "_template": "markdown",
+      "content": "Add content here.\n\nnope\n\n# whoa"
     }
   ]
 }
