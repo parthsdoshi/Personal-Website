@@ -13,10 +13,6 @@
     {
       "_template": "image",
       "image": "../../../images/placeholder_1280x960.png"
-    },
-    {
-      "_template": "markdown",
-      "content": "## is this one even better?\n\nwhoa why can't I type in real time?\n\nActually that's much better."
     }
   ]
 }
