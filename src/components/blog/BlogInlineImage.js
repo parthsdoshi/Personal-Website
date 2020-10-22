@@ -1,4 +1,5 @@
 import React from "react"
+import { useStaticQuery, graphql } from 'gatsby';
 import { InlineImage, BlocksControls } from 'react-tinacms-inline';
 import Img from "gatsby-image"
 
@@ -28,22 +29,20 @@ export const generateBlogInlineImage = (blogDataPath) => (
     )
 )
 
-export const generateBlogInlineImageBlock = (BlogInlineImage) => (
-    ({index, data}) => {
-        console.log(data)
+export const generateBlogInlineImageBlock = (BlogInlineImage, blocks, cmsEnabled) => (
+    ({ index }) => {
         return (
             <BlocksControls index={index}>
                 <BlogInlineImage
                     name="image"
                     alt="test"
                     previewSrc={formValues => {
-                        console.log(formValues)
                         let imageSharp = formValues.jsonNode.blocks[index].image.childImageSharp
                         return (imageSharp ? imageSharp.fluid : "https://bulma.io/images/placeholders/96x96.png")}}
                 >
                     {({ src }) => (
                         <Img
-                            fluid={ src || data.image.childImageSharp.fluid }
+                            fluid={ cmsEnabled ? src : blocks[index].image.childImageSharp.fluid }
                         />
                     )}
                 </BlogInlineImage>

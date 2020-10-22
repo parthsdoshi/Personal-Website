@@ -26,7 +26,7 @@ const BlogTemplate = ({ data }) => {
     const cms = useCMS()
     const [blogData, form] = useJsonForm(data.testJsonJson)
     const BlogInlineImage = generateBlogInlineImage(blogData.fileRelativePath)
-    const BlogInlineImageBlock = generateBlogInlineImageBlock(BlogInlineImage)
+    const BlogInlineImageBlock = generateBlogInlineImageBlock(BlogInlineImage, blogData.blocks, cms.enabled)
     const blog_blocks = {
         markdown: {
             Component: BlogInlineWysiwyg,
@@ -126,6 +126,7 @@ const BlogTemplate = ({ data }) => {
 export const blogQuery = graphql`
     query chefBlogPost($id: String) {
         testJsonJson(id: { eq: $id }) {
+            id
             titleImage {
                 childImageSharp {
                     fluid {
