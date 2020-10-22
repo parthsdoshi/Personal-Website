@@ -80,10 +80,8 @@ const BlogTemplate = ({ data }) => {
                                     <figure className="image is-96x96">
                                         <BlogInlineImage
                                             name="rawJson.authorImage"
-                                            rawImage={blogData.rawJson.authorImage}
                                             previewSrc={formValues => (formValues.jsonNode.authorImage.childImageSharp ? formValues.jsonNode.authorImage.childImageSharp.fluid : "https://bulma.io/images/placeholders/96x96.png")}
                                             alt="author-image"
-                                            blogDataPath={blogData.fileRelativePath}
                                         >
                                             {({ src }) => (
                                                 <Img
