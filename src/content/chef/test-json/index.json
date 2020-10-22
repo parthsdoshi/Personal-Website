@@ -11,8 +11,11 @@
       "content": "Add content here.\n\nnope\n\n# whoa"
     },
     {
+      "_template": "image",
+      "image": "../../../images/placeholder_1280x960.png"
+    },
+    {
       "_template": "markdown",
-      "markdown": "Add content here.",
       "content": "## is this one even better?\n\nwhoa why can't I type in real time?\n\nActually that's much better."
     }
   ]
