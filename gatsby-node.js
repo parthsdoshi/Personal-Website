@@ -9,15 +9,11 @@ const { DEFAULT_PATH } = require("./src/shared/chef")
 
 exports.createSchemaCustomization = ({ actions }) => {
     const typeDefs = `
-      type MarkdownRemark implements Node {
-        frontmatter: Frontmatter
-      }
-  
-      type Frontmatter {
+      type TestJsonJson implements Node {
+        titleImage: File
+        authorImage: File
         title: String
         date: Date
-        author: String
-        slug: String
       }
     `
     actions.createTypes(typeDefs)
@@ -33,13 +29,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     // Query for markdown nodes to use in creating pages.
     const { errors, data } = await graphql(`
         query getEdges {
-            allMarkdownRemark( filter: { fileRelativePath: { glob: "${blogContentPath}" } }) {
+            allTestJsonJson( filter: { fileRelativePath: { glob: "${blogContentPath}" } }) {
                 edges {
                     node {
                         id
-                        frontmatter {
-                            slug
-                        }
+                        slug
                     }
                 }
             }
@@ -52,9 +46,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
 
     // Create blog post pages.
-    data.allMarkdownRemark.edges.forEach(({ node }) => {
+    data.allTestJsonJson.edges.forEach(({ node }) => {
         createPage({
-            path: `/chef/${node.frontmatter.slug}`,
+            path: `/chef/${node.slug}`,
             component: blogPostTemplate,
             context: {
                 // Add optional context data to be inserted

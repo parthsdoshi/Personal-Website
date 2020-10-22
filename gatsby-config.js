@@ -43,6 +43,7 @@ module.exports = {
       }
     },
     `gatsby-transformer-remark`,
+    `gatsby-transformer-json`,
     {
       resolve: "gatsby-plugin-tinacms",
       options: {
@@ -60,7 +61,8 @@ module.exports = {
               pushOnCommit: true,
             }
           },
-          "gatsby-tinacms-remark"
+          "gatsby-tinacms-remark",
+          "gatsby-tinacms-json",
         ],
       },
     },

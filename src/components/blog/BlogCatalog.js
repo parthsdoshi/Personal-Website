@@ -9,34 +9,31 @@ const BlogCatalog = () => {
     // https://github.com/gatsbyjs/gatsby/issues/10482
     const data = useStaticQuery(graphql`
         query {
-            allMarkdownRemark(
+            allTestJsonJson(
                 filter: { fileRelativePath: { glob: "/src/content/chef/*/*" } }
-                sort: {fields: frontmatter___date, order: DESC}
+                sort: {fields: date, order: DESC}
             ) {
                 edges {
                     node {
                         id
-                        frontmatter {
-                            title
-                            date
-                            author
-                            slug
-                            titleImage {
-                                childImageSharp {
-                                    fluid {
-                                        ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                                    }
-                                }
-                            }
-                            authorImage {
-                                childImageSharp {
-                                    fluid {
-                                        ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                                    }
+                        title
+                        date
+                        author
+                        slug
+                        titleImage {
+                            childImageSharp {
+                                fluid {
+                                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
                                 }
                             }
                         }
-                        excerpt
+                        authorImage {
+                            childImageSharp {
+                                fluid {
+                                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -47,40 +44,40 @@ const BlogCatalog = () => {
     return (
         <PaddedSection>
             <div className="columns is-multiline">
-                {data.allMarkdownRemark.edges.map(({ node }) => (
+                {data.allTestJsonJson.edges.map(({ node }) => (
                     <div className="column is-one-third" key={node.id}>
-                        <Link to={`/chef/${node.frontmatter.slug}`}>
+                        <Link to={`/chef/${node.slug}`}>
                             <div className="card" style={fullCard}>
                                 <div className="card-image">
                                     <figure className="image">
-                                        <Img fluid={node.frontmatter.titleImage.childImageSharp.fluid} alt="food-image" />
+                                        <Img fluid={node.titleImage.childImageSharp.fluid} alt="food-image" />
                                     </figure>
                                 </div>
                                 <div className="card-content">
                                     <div className="media">
                                         <div className="media-left">
-                                            <figure className="image is-96x96">
-                                                <Img fluid={node.frontmatter.authorImage.childImageSharp.fluid} alt="author-image" />
+                                            <figure className="image is-48x48">
+                                                <Img fluid={node.authorImage.childImageSharp.fluid} alt="author-image" />
                                             </figure>
                                         </div>
                                         <div className="media-content">
                                             <p className="title is-4">
-                                                {node.frontmatter.title}
+                                                {node.title}
                                             </p>
                                             <p className="subtitle is-6">
-                                                {node.frontmatter.author}
+                                                {node.author}
                                             </p>
                                         </div>
                                     </div>
 
                                     <div className="content">
-                                        {node.excerpt}
+                                        TODO
                                     </div>
 
                                     <footer className="card-footer">
                                         <p className="card-footer-item">
                                             <time>
-                                                {new Date(node.frontmatter.date).toDateString()}
+                                                {new Date(node.date).toDateString()}
                                             </time>
                                         </p>
                                         <a className="card-footer-item">

@@ -1,16 +1,17 @@
 import React from "react"
-import { useRemarkForm } from 'gatsby-tinacms-remark';
+// import { useRemarkForm } from 'gatsby-tinacms-remark';
+import { useJsonForm } from 'gatsby-tinacms-json';
 import { usePlugin, useCMS } from 'tinacms';
 import { graphql, Link } from "gatsby";
 import Img from "gatsby-image"
-import { InlineForm, InlineTextarea } from 'react-tinacms-inline';
+import { InlineForm, InlineTextarea, InlineBlocks } from 'react-tinacms-inline';
 import styled  from 'styled-components'
 
 import Navbar from "../../components/Navbar";
 import PaddedSection from "../../components/Section"
-import DevelopInlineWysiwyg from '../../components/DevelopInlineWysiwyg';
 import NoOverflowBackgroundImage from '../../components/NoOverflowBackgroundImage'
 import BlogInlineImage from '../../components/blog/BlogInlineImage'
+import { BlogInlineWysiwyg, blog_inline_wysiwyg_template } from '../../components/blog/BlogInlineWysiwygBlock'
 
 
 const NegativePaddingDiv = styled.div`
@@ -21,27 +22,30 @@ const MarginRightSpan = styled.span`
     margin-right: 1em;
 `
 
+const BLOG_BLOCKS = {
+    markdown: {
+        Component: BlogInlineWysiwyg,
+        template: blog_inline_wysiwyg_template,
+    },
+}
+
 const BlogTemplate = ({ data }) => {
     const cms = useCMS()
-    const [blogData, form] = useRemarkForm(data.markdownRemark)
+    const [blogData, form] = useJsonForm(data.testJsonJson)
     usePlugin(form)
-    console.log(data)
     return (
         <InlineForm form={form}>
             <BlogInlineImage
-                name="rawFrontmatter.titleImage"
-                rawImage={blogData.rawFrontmatter.titleImage}
-                previewSrc={formValues => {
-                    return (formValues.frontmatter.titleImage.childImageSharp.fluid)
-                }}
+                name="rawJson.titleImage"
+                rawImage={blogData.rawJson.titleImage}
+                previewSrc={formValues => (formValues.jsonNode.titleImage.childImageSharp ? formValues.jsonNode.titleImage.childImageSharp.fluid : "https://bulma.io/images/placeholders/1280x960.png")}
                 alt="food-image"
                 blogDataPath={blogData.fileRelativePath}
             >
                 {({ src }) => (
                     <NoOverflowBackgroundImage 
-                        fluid={
-                            cms.enabled ? src : blogData.frontmatter.titleImage.childImageSharp.fluid
-                        }>
+                        fluid={cms.enabled ? src : blogData.titleImage.childImageSharp.fluid}
+                    >
                         <section className="hero is-fullheight">
                             <div className="hero-head">
                                 <PaddedSection style={{backgroundColor: "white"}} isnavbar>
@@ -72,18 +76,16 @@ const BlogTemplate = ({ data }) => {
                                 <div className="media-left">
                                     <figure className="image is-96x96">
                                         <BlogInlineImage
-                                            name="rawFrontmatter.authorImage"
-                                            rawImage={blogData.rawFrontmatter.authorImage}
-                                            previewSrc={formValues => {
-                                                return (formValues.frontmatter.authorImage.childImageSharp.fluid)
-                                            }}
+                                            name="rawJson.authorImage"
+                                            rawImage={blogData.rawJson.authorImage}
+                                            previewSrc={formValues => (formValues.jsonNode.authorImage.childImageSharp ? formValues.jsonNode.authorImage.childImageSharp.fluid : "https://bulma.io/images/placeholders/96x96.png")}
                                             alt="author-image"
                                             blogDataPath={blogData.fileRelativePath}
                                         >
                                             {({ src }) => (
                                                 <Img
                                                     fluid={
-                                                        cms.enabled ? src : blogData.frontmatter.authorImage.childImageSharp.fluid
+                                                        cms.enabled ? src : blogData.authorImage.childImageSharp.fluid
                                                     }
                                                 />
                                             )}
@@ -92,27 +94,18 @@ const BlogTemplate = ({ data }) => {
                                 </div>
                                 <div className="media-content">
                                     <p className="title is-4">
-                                        <InlineTextarea name="rawFrontmatter.title" />
+                                        <InlineTextarea name="rawJson.title" />
                                     </p>
                                     <p className="subtitle is-5">
-                                        <InlineTextarea name="rawFrontmatter.author" />
+                                        <InlineTextarea name="rawJson.author" />
                                     </p>
                                     <p className="subtitle is-6">
-                                        {new Date(blogData.frontmatter.date).toDateString()}
+                                        {new Date(blogData.date).toDateString()}
                                     </p>
                                 </div>
                             </div>
                             <div className="content">
-                                <DevelopInlineWysiwyg
-                                    name="rawMarkdownBody"
-                                    sticky={false}
-                                >
-                                    <div
-                                        dangerouslySetInnerHTML={{
-                                            __html: blogData.html,
-                                        }}
-                                    />
-                                </DevelopInlineWysiwyg>
+                                <InlineBlocks name="rawJson.blocks" blocks={BLOG_BLOCKS} />
                             </div>
                         </div>
                         <footer className="card-footer">
@@ -129,29 +122,26 @@ const BlogTemplate = ({ data }) => {
 
 export const blogQuery = graphql`
     query chefBlogPost($id: String) {
-        markdownRemark(id: { eq: $id }) {
-            ...TinaRemark
-            frontmatter {
-                titleImage {
-                    childImageSharp {
-                        fluid {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                        }
+        testJsonJson(id: { eq: $id }) {
+            titleImage {
+                childImageSharp {
+                    fluid {
+                        ...GatsbyImageSharpFluid_withWebp_tracedSVG
                     }
                 }
-                authorImage {
-                    childImageSharp {
-                        fluid(maxWidth: 96) {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                        }
-                    }
-                }
-                title
-                date
-                author
-                slug
             }
-            html
+            authorImage {
+                childImageSharp {
+                    fluid(maxWidth: 96) {
+                        ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                    }
+                }
+            }
+            title
+            date
+            author
+            slug
+            rawJson
             fileRelativePath
         }
     }

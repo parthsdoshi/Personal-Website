@@ -14,8 +14,8 @@ function createBlogPostSlug(form) {
     return slugify(folder)
 }
 
-function BlogPostCreator(RemarkCreatorPlugin) {
-    return new RemarkCreatorPlugin({
+function BlogPostCreator(JsonCreatorPlugin) {
+    return new JsonCreatorPlugin({
         label: "Create Post",
         fields: [
             {
@@ -48,9 +48,9 @@ function BlogPostCreator(RemarkCreatorPlugin) {
         ],
         filename: form => {
             let slug = createBlogPostSlug(form)
-            return `${DEFAULT_PATH}/${slug}/index.md`
+            return `${DEFAULT_PATH}/${slug}/index.json`
         },
-        frontmatter: form => ({
+        data: form => ({
             title: form.title,
             titleImage: "../../../images/placeholder_1280x960.png",
             authorImage: "../../../images/placeholder_96x96.png",
@@ -58,7 +58,6 @@ function BlogPostCreator(RemarkCreatorPlugin) {
             author: form.author ? form.author : "Parth Doshi",
             slug: createBlogPostSlug(form),
         }),
-        body: form => "Add content here."
     })
 }
 
@@ -70,8 +69,8 @@ const ChefPage = () => {
             import("react-tinacms-date").then(({ DateFieldPlugin }) => {
                 cms.plugins.add(DateFieldPlugin)
             })
-            import('gatsby-tinacms-remark').then(({ RemarkCreatorPlugin }) => {
-                cms.plugins.add(BlogPostCreator(RemarkCreatorPlugin))
+            import('gatsby-tinacms-json').then(({ JsonCreatorPlugin }) => {
+                cms.plugins.add(BlogPostCreator(JsonCreatorPlugin))
             })
         }
     }, [cms.enabled, cms.plugins])
