@@ -1,28 +1,61 @@
 import React from "react"
-import { InlineImage } from 'react-tinacms-inline';
+import { InlineImage, BlocksControls } from 'react-tinacms-inline';
+import Img from "gatsby-image"
 
 import styled  from 'styled-components'
 import { parse, getUploadDir } from "./common";
 
-const PathedInlineImage = ({name, rawImage, alt, children, previewSrc, blogDataPath, className}) => (
-    <div className={className}>
-        <InlineImage
-            name={name}
-            parse={(media) => parse(media, rawImage, blogDataPath)}
-            uploadDir={getUploadDir}
-            previewSrc={(fieldValue, fieldPath, formValues) => (
-                previewSrc(formValues)
-            )}
-            alt={alt}
-            focusRing={{offset: 0}}
-        >
-            {children}
-        </InlineImage>
-    </div>
-)
-
-const BlogInlineImage = styled(PathedInlineImage)`
+const NoOverflowDiv = styled.div`
     overflow: none;
 `
 
-export default BlogInlineImage;
+export const generateBlogInlineImage = (blogDataPath) => (
+    ({name,  alt, children, previewSrc}) => (
+        <NoOverflowDiv>
+            <InlineImage
+                name={name}
+                parse={(media) => parse(media, blogDataPath)}
+                uploadDir={getUploadDir}
+                previewSrc={(fieldValue, fieldPath, formValues) => (
+                    previewSrc(formValues)
+                )}
+                alt={alt}
+                focusRing={{offset: 0}}
+            >
+                {children}
+            </InlineImage>
+        </NoOverflowDiv>
+    )
+)
+
+export const generateBlogInlineImageBlock = (BlogInlineImage) => (
+    ({index, data}) => {
+        console.log(data)
+        return (
+            <BlocksControls index={index}>
+                <BlogInlineImage
+                    name="image"
+                    alt="test"
+                    previewSrc={formValues => {
+                        console.log(formValues)
+                        let imageSharp = formValues.jsonNode.blocks[index].image.childImageSharp
+                        return (imageSharp ? imageSharp.fluid : "https://bulma.io/images/placeholders/96x96.png")}}
+                >
+                    {({ src }) => (
+                        <Img
+                            fluid={ src || data.image.childImageSharp.fluid }
+                        />
+                    )}
+                </BlogInlineImage>
+            </BlocksControls>
+        )
+    }
+)
+
+export const blog_inline_image_template = {
+    label: 'Image',
+    defaultItem: {
+        image: '../../../images/placeholder_1280x960.png',
+    },
+    fields: [],
+}

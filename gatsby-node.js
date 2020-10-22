@@ -9,11 +9,16 @@ const { DEFAULT_PATH } = require("./src/shared/chef")
 
 exports.createSchemaCustomization = ({ actions }) => {
     const typeDefs = `
+      type TestJsonJsonBlocks implements Node {
+        content: String
+        image: File
+      }
       type TestJsonJson implements Node {
         titleImage: File
         authorImage: File
         title: String
         date: Date
+        blocks: [TestJsonJsonBlocks]
       }
     `
     actions.createTypes(typeDefs)

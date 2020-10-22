@@ -10,7 +10,7 @@ import styled  from 'styled-components'
 import Navbar from "../../components/Navbar";
 import PaddedSection from "../../components/Section"
 import NoOverflowBackgroundImage from '../../components/NoOverflowBackgroundImage'
-import BlogInlineImage from '../../components/blog/BlogInlineImage'
+import { blog_inline_image_template, generateBlogInlineImage, generateBlogInlineImageBlock } from '../../components/blog/BlogInlineImage'
 import { BlogInlineWysiwyg, blog_inline_wysiwyg_template } from '../../components/blog/BlogInlineWysiwygBlock'
 
 
@@ -22,25 +22,28 @@ const MarginRightSpan = styled.span`
     margin-right: 1em;
 `
 
-const BLOG_BLOCKS = {
-    markdown: {
-        Component: BlogInlineWysiwyg,
-        template: blog_inline_wysiwyg_template,
-    },
-}
-
 const BlogTemplate = ({ data }) => {
     const cms = useCMS()
     const [blogData, form] = useJsonForm(data.testJsonJson)
+    const BlogInlineImage = generateBlogInlineImage(blogData.fileRelativePath)
+    const BlogInlineImageBlock = generateBlogInlineImageBlock(BlogInlineImage)
+    const blog_blocks = {
+        markdown: {
+            Component: BlogInlineWysiwyg,
+            template: blog_inline_wysiwyg_template,
+        },
+        image: {
+            Component: BlogInlineImageBlock,
+            template: blog_inline_image_template,
+        },
+    }
     usePlugin(form)
     return (
         <InlineForm form={form}>
             <BlogInlineImage
                 name="rawJson.titleImage"
-                rawImage={blogData.rawJson.titleImage}
                 previewSrc={formValues => (formValues.jsonNode.titleImage.childImageSharp ? formValues.jsonNode.titleImage.childImageSharp.fluid : "https://bulma.io/images/placeholders/1280x960.png")}
                 alt="food-image"
-                blogDataPath={blogData.fileRelativePath}
             >
                 {({ src }) => (
                     <NoOverflowBackgroundImage 
@@ -105,7 +108,7 @@ const BlogTemplate = ({ data }) => {
                                 </div>
                             </div>
                             <div className="content">
-                                <InlineBlocks name="rawJson.blocks" blocks={BLOG_BLOCKS} />
+                                <InlineBlocks name="rawJson.blocks" blocks={blog_blocks} />
                             </div>
                         </div>
                         <footer className="card-footer">
@@ -143,6 +146,16 @@ export const blogQuery = graphql`
             slug
             rawJson
             fileRelativePath
+            blocks {
+                content
+                image {
+                    childImageSharp {
+                        fluid {
+                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                        }
+                    }
+                }
+            }
         }
     }
 `

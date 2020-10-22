@@ -63,9 +63,9 @@ var getRelativeURI = function getRelativeURI(uri1, uri2) {
 
 exports.getRelativeURI = getRelativeURI;
 
-var parse = function parse(media, rawImage, blogDataPath) {
+var parse = function parse(media, blogDataPath) {
   if (!media) {
-    return rawImage;
+    return null;
   }
 
   return media.filename ? getRelativeURI(blogDataPath, media.id) : null;

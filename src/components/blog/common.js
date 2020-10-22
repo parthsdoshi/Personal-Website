@@ -20,9 +20,9 @@ export const getRelativeURI = (uri1, uri2) => {
     return upRoots.concat(uri2_components.slice(uri2_idx)).join('/');
 }
 
-export const parse = (media, rawImage, blogDataPath) => {
+export const parse = (media, blogDataPath) => {
     if (!media) {
-        return rawImage
+        return null
     }
     return media.filename ? getRelativeURI(blogDataPath, media.id) : null
 }
