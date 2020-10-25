@@ -137,7 +137,7 @@ const Navbar = (props) => {
                                 </div>
                             </div>
                             <Link className="navbar-item" to="/chef">
-                                <div className={`button is-info is-rounded has-text-weight-bold ${!props.hideChefNotification && "is-outlined"}`}>
+                                <div className={`button is-link is-rounded has-text-weight-bold ${!props.hideChefNotification && "is-outlined"}`}>
                                     Blog
                                     <MarginLeftSpan className="icon">
                                         <i class="fab fa-blogger"></i>

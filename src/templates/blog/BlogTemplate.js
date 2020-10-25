@@ -15,7 +15,7 @@ import { BlogInlineWysiwyg, blog_inline_wysiwyg_template } from '../../component
 
 
 const NegativePaddingDiv = styled.div`
-    margin-top: -40vh;
+    margin-top: -34vh;
 `
 
 const MarginRightSpan = styled.span`
@@ -72,7 +72,7 @@ const BlogTemplate = ({ data }) => {
                 )}
             </BlogInlineImage>
             <NegativePaddingDiv>
-                <PaddedSection paddingLeft="6rem" paddingRight="6rem">
+                <PaddedSection paddingLeft="5vw" paddingRight="5vw">
                     <div className="card">
                         <div className="card-content">
                             <div className="media">
