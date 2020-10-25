@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react';
-
 import { Link, useStaticQuery, graphql } from 'gatsby';
+import styled  from 'styled-components'
 
 import SiteLogo from './SiteLogo';
+
+const MarginLeftSpan = styled.span`
+    margin-left: .3em !important;
+`
 
 const Navbar = (props) => {
     let navbarBurger = null
@@ -115,45 +119,53 @@ const Navbar = (props) => {
 
                     <div id="navbarMenu" className="navbar-menu">
                         <div className="navbar-end">
-                        <div className={"navbar-item is-hoverable " + (props.isFooter ? "has-dropdown-up" : "has-dropdown")}>
-                            <div className="navbar-link">
-                                Projects
-                            </div>
-                            <div className="navbar-dropdown is-boxed">
-                                <a className="navbar-item" href="https://github.com/parthsdoshi/fabel">
-                                    Fabel
-                                </a>
-                                <a className="navbar-item" href="http://mediaq.parthdoshi.com">
-                                    MediaQ
-                                </a>
-                                <hr className="navbar-divider" />
-                                <div className="navbar-item">
-                                    More to come soon :)
+                            <div className={"navbar-item is-hoverable " + (props.isFooter ? "has-dropdown-up" : "has-dropdown")}>
+                                <div className="navbar-link">
+                                    Projects
+                                </div>
+                                <div className="navbar-dropdown is-boxed">
+                                    <a className="navbar-item" href="https://github.com/parthsdoshi/fabel">
+                                        Fabel
+                                    </a>
+                                    <a className="navbar-item" href="http://mediaq.parthdoshi.com">
+                                        MediaQ
+                                    </a>
+                                    <hr className="navbar-divider" />
+                                    <div className="navbar-item">
+                                        More to come soon :)
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <a className="navbar-item" href="https://github.com/parthsdoshi">
-                            <div className="button is-link is-rounded is-outlined">
-                                Github
-                                <span className="icon" style={marginLeftStyle}>
-                                    <i className="fab fa-github"></i>
-                                </span>
-                            </div>
-                        </a>
-                        <a className="navbar-item" href="https://linkedin.com/in/parthsdoshi">
-                            <div className="button is-link is-rounded is-outlined">
-                                LinkedIn
-                                    <span className="icon" style={marginLeftStyle}>
+                            <Link className="navbar-item" to="/chef">
+                                <div className={`button is-info is-rounded has-text-weight-bold ${!props.hideChefNotification && "is-outlined"}`}>
+                                    Blog
+                                    <MarginLeftSpan className="icon">
+                                        <i class="fab fa-blogger"></i>
+                                    </MarginLeftSpan>
+                                </div>
+                            </Link>
+                            <a className="navbar-item" href="https://github.com/parthsdoshi">
+                                <div className="button is-link is-rounded is-outlined">
+                                    Github
+                                    <MarginLeftSpan className="icon">
+                                        <i className="fab fa-github"></i>
+                                    </MarginLeftSpan>
+                                </div>
+                            </a>
+                            <a className="navbar-item" href="https://linkedin.com/in/parthsdoshi">
+                                <div className="button is-link is-rounded is-outlined">
+                                    LinkedIn
+                                    <MarginLeftSpan className="icon">
                                         <i className="fab fa-linkedin"></i>
-                                    </span>
+                                    </MarginLeftSpan>
                                 </div>
                             </a>
                             <div className="navbar-item" role="button" onClick={openEmailModal} aria-label="Open Email Modal">
                                 <div className="button is-link is-rounded is-outlined">
                                     Email
-                                    <span className="icon" style={marginLeftStyle}>
+                                    <MarginLeftSpan className="icon">
                                         <i className="fas fa-envelope"></i>
-                                    </span>
+                                    </MarginLeftSpan>
                                 </div>
                             </div>
                             {!props.downloadResume &&
@@ -209,7 +221,7 @@ const Navbar = (props) => {
             </div>
             {!props.hideChefNotification && <Link to="/chef">
                 <div class="notification is-link">
-                    While you're here, check out my brand new food blog! It's got some delicious food and some great pictures. I'd love to hear any criticism too :)
+                    While you're here, check out my new blog! It's mostly about food but I also write about my general thoughts. I'd love to hear any ideas/criticism you may have :)
                 </div>
             </Link>}
         </div>

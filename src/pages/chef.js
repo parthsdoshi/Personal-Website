@@ -3,7 +3,9 @@ import { useCMS } from 'tinacms'
 import slugify from "slugify"
 
 import NavbarFooter from "../components/NavbarFooter"
+import PaddedSection from "../components/Section"
 import SEO from "../components/seo"
+import BlogHeader from "../components/blog/BlogHeader"
 import BlogCatalog from "../components/blog/BlogCatalog"
 
 import { DEFAULT_AUTHOR, DEFAULT_PATH, DEFAULT_TITLEIMAGE } from "../shared/chef"
@@ -78,6 +80,9 @@ const ChefPage = () => {
     return (
         <NavbarFooter hideFooter hideChefNotification>
             <SEO title="Food" />
+            <PaddedSection paddingBottom="0" paddingTop="1em">
+                <BlogHeader />
+            </PaddedSection>
             <BlogCatalog />
         </NavbarFooter>
     )
