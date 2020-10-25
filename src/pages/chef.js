@@ -8,7 +8,7 @@ import SEO from "../components/seo"
 import BlogHeader from "../components/blog/BlogHeader"
 import BlogCatalog from "../components/blog/BlogCatalog"
 
-import { DEFAULT_AUTHOR, DEFAULT_PATH, DEFAULT_TITLEIMAGE } from "../shared/chef"
+import { DEFAULT_AUTHOR, DEFAULT_PATH } from "../shared/chef"
 
 function createBlogPostSlug(form) {
     // Normalizes slug for a human-readable uri.
@@ -59,6 +59,7 @@ function BlogPostCreator(JsonCreatorPlugin) {
             date: (form.date ? form.date : new Date()).toISOString(),
             author: form.author ? form.author : "Parth Doshi",
             slug: createBlogPostSlug(form),
+            blocks: [],
         }),
     })
 }

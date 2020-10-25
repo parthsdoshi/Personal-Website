@@ -19,7 +19,6 @@ const BlogHeader = () => {
             }
         }
     `)
-    console.log(data)
     const [headerData, form] = useRemarkForm(data.markdownRemark)
     usePlugin(form)
 

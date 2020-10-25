@@ -39,6 +39,7 @@ const BlogCatalog = () => {
             }
         }
     `)
+    console.log(data)
 
     let fullCard = { height: "100%" }
     return (

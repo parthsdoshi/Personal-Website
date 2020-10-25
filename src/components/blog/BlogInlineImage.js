@@ -1,5 +1,4 @@
 import React from "react"
-import { useStaticQuery, graphql } from 'gatsby';
 import { InlineImage, BlocksControls } from 'react-tinacms-inline';
 import Img from "gatsby-image"
 
