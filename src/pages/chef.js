@@ -79,7 +79,7 @@ const ChefPage = () => {
 
     return (
         <NavbarFooter hideFooter hideChefNotification>
-            <SEO title="Food" />
+            <SEO title="Blog" />
             <PaddedSection paddingBottom="0" paddingTop="1em">
                 <BlogHeader />
             </PaddedSection>
