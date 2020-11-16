@@ -16,17 +16,20 @@ import Img from "gatsby-image"
 const ViptelaLogo = () => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "Viptela_logo.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+      strapiWorkExperience(slug: {eq: "viptela-2018"}) {
+        logo {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
           }
         }
       }
     }
   `)
+  let image = data.strapiWorkExperience.logo
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} alt="A picture of Viptela's logo." />
+  return <Img fluid={image.childImageSharp.fluid} alt="A picture of Viptela's logo." />
 }
 
 export default ViptelaLogo;

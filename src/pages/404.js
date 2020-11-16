@@ -7,10 +7,12 @@ import NavbarFooter from "../components/NavbarFooter"
 
 export const cat404Data = graphql`
   query {
-    placeholderImage: file(relativePath: { eq: "cat_404.jpg" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
+    strapiGlobal {
+      notFoundImage {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
         }
       }
     }
@@ -28,7 +30,7 @@ const NotFoundPage = ({ data }) => {
           <div className="container">
             <div className="columns box is-vcentered">
               <div className="column is-half">
-                <Img fluid={data.placeholderImage.childImageSharp.fluid} alt="Cat hiding under papers imitating a 404 not found." />
+                <Img fluid={data.strapiGlobal.notFoundImage.childImageSharp.fluid} alt="Cat hiding under papers imitating a 404 not found." />
               </div>
               <div className="column is-half has-text-centered">
                 <div className="content title">

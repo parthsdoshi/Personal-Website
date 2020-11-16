@@ -16,17 +16,20 @@ import Img from "gatsby-image"
 const ProfilePhoto = (props) => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "ferry_profile_picture_square.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+      strapiHome {
+        profile_picture {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
           }
         }
       }
     }
   `)
+  let image = data.strapiHome.profile_picture
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} alt="Parth Doshi's profile photo." {...props}/>
+  return <Img fluid={image.childImageSharp.fluid} alt="Profile Pic" {...props}/>
 }
 
 export default ProfilePhoto;

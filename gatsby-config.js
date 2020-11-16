@@ -1,14 +1,6 @@
 const path = require('path')
-const REPO_ABSOLUTE_PATH = path.join(process.cwd(), '')
 
 module.exports = {
-  siteMetadata: {
-    title: `Parth Doshi`,
-    description: `My Website`,
-    author: `Parth Doshi`,
-    resume: `https://onedrive.live.com/embed?cid=5FFDC0A7660E0685&resid=5FFDC0A7660E0685%2151809&authkey=AK5Q5ppEccrGH2M&em=2`,
-    email: `contact@parthdoshi.com`,
-  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -35,46 +27,33 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `data`,
-        path: `${__dirname}/src/data`
-      }
-    },
-    `gatsby-transformer-remark`,
-    `gatsby-transformer-json`,
-    {
-      resolve: "gatsby-plugin-tinacms",
-      options: {
-        enabled: process.env.NODE_ENV !== "production",
-        toolbar: true,
-        plugins: [
-          {
-            resolve: "gatsby-tinacms-git",
-            options: {
-              pathToRepo: REPO_ABSOLUTE_PATH,
-              pathToContent: '/',
-              defaultCommitMessage: 'Edited with CMS',
-              defaultCommitName: 'CMS',
-              defaultCommitEmail: 'doshi.parth9@gmail.com',
-              pushOnCommit: true,
-            }
-          },
-          "gatsby-tinacms-remark",
-          "gatsby-tinacms-json",
-        ],
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `chef`,
-        path: `${__dirname}/src/content/chef`
-      }
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `data`,
+    //     path: `${__dirname}/src/data`
+    //   }
+    // },
+    // `gatsby-transformer-remark`,
+    // `gatsby-transformer-json`,
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `chef`,
+    //     path: `${__dirname}/src/content/chef`
+    //   }
+    // },
     `gatsby-plugin-sass`,
     'gatsby-background-image',
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-source-strapi`,
+      options: {
+        apiURL: `https://parth-personal-website-strapi.herokuapp.com`,
+        queryLimit: 1000, // Default to 100
+        contentTypes: [`article`, `category`, `writer`, `work-experience`],
+        singleTypes: [`global`, `home`, `blog`],
+      },
+    },
   ],
 }

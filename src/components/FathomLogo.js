@@ -5,17 +5,20 @@ import Img from "gatsby-image"
 const FathomLogo = () => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "fathom_health.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+      strapiWorkExperience(slug: {eq: "fathom-health"}) {
+        logo {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
           }
         }
       }
     }
   `)
+  let image = data.strapiWorkExperience.logo
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} alt="Fathom Health's logo." />
+  return <Img fluid={image.childImageSharp.fluid} alt="Fathom Health's logo." />
 }
 
 export default FathomLogo;

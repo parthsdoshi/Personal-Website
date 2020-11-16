@@ -9,6 +9,7 @@ const MarginLeftSpan = styled.span`
 `
 
 const Navbar = (props) => {
+    console.log(props)
     let navbarBurger = null
     let addBurgerEvent = null
 
@@ -39,18 +40,16 @@ const Navbar = (props) => {
 
     const emailModal = React.createRef()
 
-    const { site } = useStaticQuery(graphql`
+    const { strapiGlobal } = useStaticQuery(graphql`
         query {
-            site {
-                siteMetadata {
-                    email
-                    resume
-                }
+            strapiGlobal {
+                email
+                resume_link
             }
         }
     `)
 
-    const email = site.siteMetadata.email
+    const email = strapiGlobal.email
 
     const openEmailModal = () => {
         emailModal.current.classList.toggle("is-active")
@@ -93,7 +92,7 @@ const Navbar = (props) => {
 
     const marginLeftStyle = { marginLeft: ".3em" }
 
-    let downloadResumeLink = site.siteMetadata.resume.replace('embed', 'download')
+    let downloadResumeLink = strapiGlobal.resume_link.replace('embed', 'download')
 
     return (
         <div style={props.style}>
@@ -136,11 +135,11 @@ const Navbar = (props) => {
                                     </div>
                                 </div>
                             </div>
-                            <Link className="navbar-item" to="/chef">
-                                <div className={`button is-link is-rounded has-text-weight-bold ${!props.hideChefNotification && "is-outlined"}`}>
+                            <Link className="navbar-item" to="/blog">
+                                <div className={`button is-link is-rounded has-text-weight-bold ${(!props.hideChefNotification || props.isFooter) && "is-outlined"}`}>
                                     Blog
                                     <MarginLeftSpan className="icon">
-                                        <i class="fab fa-blogger"></i>
+                                        <i className="fab fa-blogger"></i>
                                     </MarginLeftSpan>
                                 </div>
                             </Link>
@@ -219,8 +218,8 @@ const Navbar = (props) => {
                     </footer>
                 </div>
             </div>
-            {!props.hideChefNotification && <Link to="/chef">
-                <div class="notification is-link">
+            {!props.hideChefNotification && <Link to="/blog">
+                <div className="notification is-link">
                     While you're here, check out my new blog! It's mostly about food but I also write about my general thoughts. I'd love to hear any ideas/criticism you may have :)
                 </div>
             </Link>}
