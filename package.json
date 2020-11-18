@@ -17,7 +17,7 @@
     "gatsby-plugin-sharp": "^2.6.40",
     "gatsby-plugin-styled-components": "^3.3.14",
     "gatsby-source-filesystem": "^2.3.34",
-    "gatsby-source-strapi": "https://github.com/strapi/gatsby-source-strapi.git#a0410ee7b0276066bdf98ac10e39132fd87303f4",
+    "gatsby-source-strapi": "https://github.com/parthsdoshi/gatsby-source-strapi.git#987dcdd9ca5c48fa48b7308d4c6af426d2d31edd",
     "gatsby-transformer-json": "^2.4.14",
     "gatsby-transformer-remark": "^2.8.38",
     "gatsby-transformer-sharp": "^2.5.17",

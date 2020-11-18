@@ -7049,9 +7049,9 @@ gatsby-source-filesystem@^2.3.34:
     valid-url "^1.0.9"
     xstate "^4.13.0"
 
-"gatsby-source-strapi@https://github.com/strapi/gatsby-source-strapi.git#a0410ee7b0276066bdf98ac10e39132fd87303f4":
+"gatsby-source-strapi@https://github.com/parthsdoshi/gatsby-source-strapi.git#987dcdd9ca5c48fa48b7308d4c6af426d2d31edd":
   version "0.0.12"
-  resolved "https://github.com/strapi/gatsby-source-strapi.git#a0410ee7b0276066bdf98ac10e39132fd87303f4"
+  resolved "https://github.com/parthsdoshi/gatsby-source-strapi.git#987dcdd9ca5c48fa48b7308d4c6af426d2d31edd"
   dependencies:
     axios "^0.18.0"
     gatsby-node-helpers "^0.3.0"
