@@ -1,10 +1,15 @@
 import React, { useEffect } from 'react';
-
 import { Link, useStaticQuery, graphql } from 'gatsby';
+import styled  from 'styled-components'
 
 import SiteLogo from './SiteLogo';
 
+const MarginLeftSpan = styled.span`
+    margin-left: .3em !important;
+`
+
 const Navbar = (props) => {
+    console.log(props)
     let navbarBurger = null
     let addBurgerEvent = null
 
@@ -35,18 +40,16 @@ const Navbar = (props) => {
 
     const emailModal = React.createRef()
 
-    const { site } = useStaticQuery(graphql`
+    const { strapiGlobal } = useStaticQuery(graphql`
         query {
-            site {
-                siteMetadata {
-                    email
-                    resume
-                }
+            strapiGlobal {
+                email
+                resume_link
             }
         }
     `)
 
-    const email = site.siteMetadata.email
+    const email = strapiGlobal.email
 
     const openEmailModal = () => {
         emailModal.current.classList.toggle("is-active")
@@ -87,19 +90,13 @@ const Navbar = (props) => {
         }
     }
 
-    const marginBottomStyle = { marginBottom: "-10em" }
     const marginLeftStyle = { marginLeft: ".3em" }
 
-    let footerStyle = marginBottomStyle;
-    if (props.isFooter) {
-        footerStyle = null;
-    }
-
-    let downloadResumeLink = site.siteMetadata.resume.replace('embed', 'download')
+    let downloadResumeLink = strapiGlobal.resume_link.replace('embed', 'download')
 
     return (
-        <div>
-            <nav className={"navbar is-transparent" + (props.isFooter ? "" : "")} style={footerStyle}>
+        <div style={props.style}>
+            <nav className={"navbar is-transparent" + (props.isFooter ? "" : "")}>
                 <div className="container">
                     <div className="navbar-brand">
                         <Link className="navbar-item" to="/">
@@ -121,45 +118,53 @@ const Navbar = (props) => {
 
                     <div id="navbarMenu" className="navbar-menu">
                         <div className="navbar-end">
-                        <div className={"navbar-item is-hoverable " + (props.isFooter ? "has-dropdown-up" : "has-dropdown")}>
-                            <div className="navbar-link">
-                                Projects
-                            </div>
-                            <div className="navbar-dropdown is-boxed">
-                                <a className="navbar-item" href="https://github.com/parthsdoshi/fabel">
-                                    Fabel
-                                </a>
-                                <a className="navbar-item" href="http://mediaq.parthdoshi.com">
-                                    MediaQ
-                                </a>
-                                <hr className="navbar-divider" />
-                                <div className="navbar-item">
-                                    More to come soon :)
+                            <div className={"navbar-item is-hoverable " + (props.isFooter ? "has-dropdown-up" : "has-dropdown")}>
+                                <div className="navbar-link">
+                                    Projects
+                                </div>
+                                <div className="navbar-dropdown is-boxed">
+                                    <a className="navbar-item" href="https://github.com/parthsdoshi/fabel">
+                                        Fabel
+                                    </a>
+                                    <a className="navbar-item" href="http://mediaq.parthdoshi.com">
+                                        MediaQ
+                                    </a>
+                                    <hr className="navbar-divider" />
+                                    <div className="navbar-item">
+                                        More to come soon :)
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <a className="navbar-item" href="https://github.com/parthsdoshi">
-                            <div className="button is-link is-rounded is-outlined">
-                                Github
-                                <span className="icon" style={marginLeftStyle}>
-                                    <i className="fab fa-github"></i>
-                                </span>
-                            </div>
-                        </a>
-                        <a className="navbar-item" href="https://linkedin.com/in/parthsdoshi">
-                            <div className="button is-link is-rounded is-outlined">
-                                LinkedIn
-                                    <span className="icon" style={marginLeftStyle}>
+                            <Link className="navbar-item" to="/blog">
+                                <div className={`button is-link is-rounded has-text-weight-bold ${(!props.hideChefNotification || props.isFooter) && "is-outlined"}`}>
+                                    Blog
+                                    <MarginLeftSpan className="icon">
+                                        <i className="fab fa-blogger"></i>
+                                    </MarginLeftSpan>
+                                </div>
+                            </Link>
+                            <a className="navbar-item" href="https://github.com/parthsdoshi">
+                                <div className="button is-link is-rounded is-outlined">
+                                    Github
+                                    <MarginLeftSpan className="icon">
+                                        <i className="fab fa-github"></i>
+                                    </MarginLeftSpan>
+                                </div>
+                            </a>
+                            <a className="navbar-item" href="https://linkedin.com/in/parthsdoshi">
+                                <div className="button is-link is-rounded is-outlined">
+                                    LinkedIn
+                                    <MarginLeftSpan className="icon">
                                         <i className="fab fa-linkedin"></i>
-                                    </span>
+                                    </MarginLeftSpan>
                                 </div>
                             </a>
                             <div className="navbar-item" role="button" onClick={openEmailModal} aria-label="Open Email Modal">
                                 <div className="button is-link is-rounded is-outlined">
                                     Email
-                                    <span className="icon" style={marginLeftStyle}>
+                                    <MarginLeftSpan className="icon">
                                         <i className="fas fa-envelope"></i>
-                                    </span>
+                                    </MarginLeftSpan>
                                 </div>
                             </div>
                             {!props.downloadResume &&
@@ -213,6 +218,11 @@ const Navbar = (props) => {
                     </footer>
                 </div>
             </div>
+            {!props.hideChefNotification && <Link to="/blog">
+                <div className="notification is-link">
+                    While you're here, check out my new blog! It's mostly about food but I also write about my general thoughts. I'd love to hear any ideas/criticism you may have :)
+                </div>
+            </Link>}
         </div>
     )
 }

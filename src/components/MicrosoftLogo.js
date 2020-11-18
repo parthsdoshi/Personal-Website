@@ -16,17 +16,20 @@ import Img from "gatsby-image"
 const MicrosoftLogo = () => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "Microsoft_logo_cropped.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+      strapiWorkExperience(slug: {eq: "microsoft"}) {
+        logo {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
           }
         }
       }
     }
   `)
+  let image = data.strapiWorkExperience.logo
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} alt="A picture of Microsoft's logo." />
+  return <Img fluid={image.childImageSharp.fluid} alt="Microsoft's logo." />
 }
 
 export default MicrosoftLogo;

@@ -16,17 +16,22 @@ import Img from "gatsby-image"
 const SiteLogo = () => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "logo_compressed.png" }) {
-        childImageSharp {
-          fixed(width: 42) {
-            ...GatsbyImageSharpFixed
+      strapiGlobal {
+        defaultSEO {
+          shareImage {
+            childImageSharp {
+              fixed(width: 42) {
+                ...GatsbyImageSharpFixed_withWebp_tracedSVG
+              }
+            }
           }
         }
       }
     }
   `)
+  let image = data.strapiGlobal.defaultSEO.shareImage
 
-  return <Img fixed={data.placeholderImage.childImageSharp.fixed} alt="Parth Doshi's Website's logo." />
+  return <Img fixed={image.childImageSharp.fixed} alt="Website Logo" />
 }
 
 export default SiteLogo;

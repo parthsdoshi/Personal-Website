@@ -16,17 +16,20 @@ import Img from "gatsby-image"
 const PurdueLogo = () => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "Purdue_full_logo.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+      strapiWorkExperience(slug: {eq: "purdue-university"}) {
+        logo {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
           }
         }
       }
     }
   `)
+  let image = data.strapiWorkExperience.logo
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} alt="A picture of Purdue University's logo." />
+  return <Img fluid={image.childImageSharp.fluid} alt="A picture of Purdue University's logo." />
 }
 
 export default PurdueLogo;

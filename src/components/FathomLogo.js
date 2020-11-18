@@ -1,8 +1,24 @@
 import React from "react"
-import logo from '../images/fathom_health.svg'
+import { useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 
 const FathomLogo = () => {
-  return <img src={logo} alt="Fathom Health's logo." />
+  const data = useStaticQuery(graphql`
+    query {
+      strapiWorkExperience(slug: {eq: "fathom-health"}) {
+        logo {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
+          }
+        }
+      }
+    }
+  `)
+  let image = data.strapiWorkExperience.logo
+
+  return <Img fluid={image.childImageSharp.fluid} alt="Fathom Health's logo." />
 }
 
 export default FathomLogo;

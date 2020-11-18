@@ -5,6 +5,7 @@ import NavbarFooter from "../components/NavbarFooter";
 import SEO from "../components/seo";
 
 const Resume = ({ data }) => {
+    let resumeLink = data.strapiGlobal.resume_link
     const [height, setHeight] = useState("100%")
     useEffect(() => {
         document.documentElement.style.overflowY = "hidden"
@@ -23,8 +24,8 @@ const Resume = ({ data }) => {
     return (
         <NavbarFooter hideFooter downloadResume>
             <SEO title="Résumé" />
-            <iframe src={data.site.siteMetadata.resume} style={{position: "relative", overflowY: "hidden", width: "100%", height: height, border: "none", padding: 0}} title="resume">
-                <a href={data.site.siteMetadata.resume}>
+            <iframe src={resumeLink} style={{position: "relative", overflowY: "hidden", width: "100%", height: height, border: "none", padding: 0}} title="resume">
+                <a href={resumeLink}>
                     Parth Doshi's very interesting résumé. You're seeing this text because you probably don't have javascript enabled!
                 </a>
             </iframe>
@@ -36,10 +37,8 @@ export default Resume;
 
 export const resumeQuery = graphql`
     query {
-        site {
-            siteMetadata {
-                resume
-            }
+        strapiGlobal {
+            resume_link
         }
     }
 `

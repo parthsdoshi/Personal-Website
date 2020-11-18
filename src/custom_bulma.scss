@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+$card-radius: .4rem;
+
+@import "~bulma/bulma.sass";
+
+.mysection {
+    @extend .section;
+    // top: 3rem, right-left: 1.5rem, bottom: 0rem
+    padding: 3rem 1.5rem 0rem;
+}
