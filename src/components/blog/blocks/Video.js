@@ -21,11 +21,17 @@ const Video = ({ vp9, h264, screenshots }) => {
     }
 
     const [loaded, setLoaded] = useState(false)
+    let width = 0
+    let height = 0
+    if (loaded) {
+        width = "auto"
+        height = "auto"
+    }
 
     return (
         <div className="has-text-centered">
             {!loaded && <Img fluid={ screenshots[0].childImageSharp.fluid } />}
-            <video height={!loaded && 0} width={!loaded && 0} controls autoPlay loop muted playsInline onLoadedData={() => setLoaded(true)}>
+            <video height={height} width={width} controls autoPlay loop muted playsInline onLoadedData={() => setLoaded(true)}>
                 {sources.map(({src, type}, index) => (
                     <source key={index} src={src} type={type} />
                 ))}
