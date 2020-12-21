@@ -7,6 +7,7 @@ import Navbar from "../../components/Navbar";
 import PaddedSection from "../../components/Section"
 import NoOverflowBackgroundImage from '../../components/NoOverflowBackgroundImage'
 import BlogBlocks from '../../components/blog/BlogBlocks'
+import SEO from "../../components/seo";
 
 
 const NegativePaddingDiv = styled.div`
@@ -19,6 +20,7 @@ const MarginRightSpan = styled.span`
 
 const BlogTemplate = ({ data }) => (
     <>
+        <SEO title={data.strapiArticle.title} description={data.strapiArticle.description} />
         <NoOverflowBackgroundImage 
             fluid={data.strapiArticle.cover.childImageSharp.fluid}
         >
@@ -103,6 +105,7 @@ export const blogQuery = graphql`
                 }
             }
             title
+            description
             publishedAt
             slug
             content {
