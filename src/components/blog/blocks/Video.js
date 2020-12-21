@@ -31,7 +31,7 @@ const Video = ({ vp9, h264, screenshots }) => {
     return (
         <div className="has-text-centered">
             {!loaded && <Img fluid={ screenshots[0].childImageSharp.fluid } />}
-            <video height={height} width={width} controls autoPlay loop muted playsInline onLoadedData={() => setLoaded(true)} onPlay={() => setLoaded(true)}>
+            <video height={height} width={width} controls autoPlay loop muted playsInline onLoadedData={() => setLoaded(true)} onPlay={() => setLoaded(true)} preload="auto">
                 {sources.map(({src, type}, index) => (
                     <source key={index} src={src} type={type} />
                 ))}
