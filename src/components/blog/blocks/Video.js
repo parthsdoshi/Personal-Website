@@ -21,7 +21,6 @@ const Video = ({ vp9, h264, screenshots }) => {
     }
 
     const [loaded, setLoaded] = useState(false)
-    console.log(loaded)
 
     return (
         <div className="has-text-centered">
