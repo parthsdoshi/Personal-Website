@@ -115,6 +115,24 @@ export const blogQuery = graphql`
                         }
                     }
                 }
+                video {
+                    videoVP9 {
+                        path
+                        ext
+                    }
+                    videoH264 {
+                        path
+                        ext
+                    }
+                    videoScreenshots {
+                        childImageSharp {
+                            fluid {
+                                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                            }
+                        }
+                    }
+                }
+                quote
             }
         }
     }
