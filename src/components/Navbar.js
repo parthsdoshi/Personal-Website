@@ -9,7 +9,6 @@ const MarginLeftSpan = styled.span`
 `
 
 const Navbar = (props) => {
-    console.log(props)
     let navbarBurger = null
     let addBurgerEvent = null
 

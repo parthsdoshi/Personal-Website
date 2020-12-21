@@ -55,5 +55,14 @@ module.exports = {
         singleTypes: [`global`, `home`, `blog`],
       },
     },
+    `gatsby-transformer-video`,
+    {
+      resolve: "gatsby-plugin-netlify-cache",
+      options: {
+        extraDirsToCache: [
+          "node_modules/.cache/gatsby-transformer-video/"
+        ]
+      }
+    }
   ],
 }
