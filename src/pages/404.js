@@ -9,9 +9,11 @@ export const cat404Data = graphql`
   query {
     strapiGlobal {
       notFoundImage {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+        localFile {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
           }
         }
       }
@@ -44,7 +46,7 @@ const NotFoundPage = ({ data }) => {
                       <span className="icon" style={marginRightStyle}>
                           <i className="fas fa-home"></i>
                       </span>
-                      Let's go home.
+                      Let's go home
                     </Link>
                 </div>
               </div>

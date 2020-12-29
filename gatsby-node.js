@@ -12,9 +12,14 @@ exports.createSchemaCustomization = ({actions}) => {
       type StrapiArticleContent implements Node {
         rich_text: String
         strapi_component: String!
-        image: File
+        image: StrapiSingleMedia
         quote: String
-        video: File
+        video: StrapiSingleMedia
+      }
+      type StrapiSingleMedia {
+        caption: String
+        alternativeText: String
+        localFile: File
       }
     `
     createTypes(typeDefs)

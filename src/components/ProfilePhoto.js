@@ -18,16 +18,18 @@ const ProfilePhoto = (props) => {
     query {
       strapiHome {
         profile_picture {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              }
             }
           }
         }
       }
     }
   `)
-  let image = data.strapiHome.profile_picture
+  let image = data.strapiHome.profile_picture.localFile
 
   return <Img fluid={image.childImageSharp.fluid} alt="Profile Pic" {...props}/>
 }

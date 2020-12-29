@@ -22,7 +22,7 @@ const BlogTemplate = ({ data }) => (
     <>
         <SEO title={data.strapiArticle.title} description={data.strapiArticle.description} />
         <NoOverflowBackgroundImage 
-            fluid={data.strapiArticle.cover.childImageSharp.fluid}
+            fluid={data.strapiArticle.cover.localFile.childImageSharp.fluid}
         >
             <section className="hero is-fullheight">
                 <div className="hero-head">
@@ -52,7 +52,7 @@ const BlogTemplate = ({ data }) => (
                             <div className="media-left">
                                 <figure className="image is-96x96">
                                     <Img
-                                        fluid={ data.strapiArticle.author.picture.childImageSharp.fluid }
+                                        fluid={ data.strapiArticle.author.picture.localFile.childImageSharp.fluid }
                                     />
                                 </figure>
                             </div>
@@ -69,7 +69,12 @@ const BlogTemplate = ({ data }) => (
                             </div>
                         </div>
                         <div className="content">
-                            <BlogBlocks blocks={data.strapiArticle.content} />
+
+                            <article class="message is-dark">
+                                <div class="message-body">
+                                    <BlogBlocks blocks={data.strapiArticle.content} />
+                                </div>
+                            </article>
                         </div>
                     </div>
                     <footer className="card-footer">
@@ -88,18 +93,26 @@ export const blogQuery = graphql`
         strapiArticle(strapiId: { eq: $strapiId }) {
             strapiId
             cover {
-                childImageSharp {
-                    fluid {
-                        ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                caption
+                alternativeText
+                localFile {
+                    childImageSharp {
+                        fluid {
+                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                        }
                     }
                 }
             }
             author {
                 name
                 picture {
-                    childImageSharp {
-                        fluid(maxWidth: 96) {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                    caption
+                    alternativeText
+                    localFile {
+                        childImageSharp {
+                            fluid {
+                                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                            }
                         }
                     }
                 }
@@ -112,26 +125,35 @@ export const blogQuery = graphql`
                 strapi_component
                 rich_text
                 image {
-                    childImageSharp {
-                        fluid {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                        }
-                    }
-                }
-                video {
-                    videoVP9 {
-                        path
-                        ext
-                    }
-                    videoH264 {
-                        path
-                        ext
-                    }
-                    videoScreenshots {
+                    caption
+                    alternativeText
+                    localFile {
                         childImageSharp {
                             fluid {
                                 ...GatsbyImageSharpFluid_withWebp_tracedSVG
                             }
+                        }
+                    }
+                }
+                video {
+                    caption
+                    alternativeText
+                    localFile {
+                        videoVP9 {
+                            path
+                            ext
+                        }
+                        videoH264 {
+                            path
+                            ext
+                        }
+                        videoScreenshots {
+                            childImageSharp {
+                                fluid {
+                                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                                }
+                            }
+                            publicURL
                         }
                     }
                 }

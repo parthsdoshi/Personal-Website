@@ -107,16 +107,16 @@ const Navbar = (props) => {
                             </strong>
                         </Link>
                         {!props.isFooter &&
-                        <div ref={navbarBurger} className="navbar-burger burger" data-target="navbarMenu">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-            }
+                            <div ref={navbarBurger} className="navbar-burger burger" data-target="navbarMenu">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        }
                     </div>
 
                     <div id="navbarMenu" className="navbar-menu">
-                        <div className="navbar-end">
+                        <div className="navbar-start">
                             <div className={"navbar-item is-hoverable " + (props.isFooter ? "has-dropdown-up" : "has-dropdown")}>
                                 <div className="navbar-link">
                                     Projects
@@ -134,51 +134,29 @@ const Navbar = (props) => {
                                     </div>
                                 </div>
                             </div>
-                            <Link className="navbar-item" to="/blog">
-                                <div className={`button is-link is-rounded has-text-weight-bold ${(!props.hideChefNotification || props.isFooter) && "is-outlined"}`}>
+                            <div className={`navbar-item ${!(!props.hideChefNotification || props.isFooter) && "is-active"}`}>
+                                <Link to="/blog">
                                     Blog
                                     <MarginLeftSpan className="icon">
                                         <i className="fab fa-blogger"></i>
                                     </MarginLeftSpan>
-                                </div>
-                            </Link>
-                            <a className="navbar-item" href="https://github.com/parthsdoshi">
-                                <div className="button is-link is-rounded is-outlined">
-                                    Github
-                                    <MarginLeftSpan className="icon">
-                                        <i className="fab fa-github"></i>
-                                    </MarginLeftSpan>
-                                </div>
-                            </a>
-                            <a className="navbar-item" href="https://linkedin.com/in/parthsdoshi">
-                                <div className="button is-link is-rounded is-outlined">
-                                    LinkedIn
-                                    <MarginLeftSpan className="icon">
-                                        <i className="fab fa-linkedin"></i>
-                                    </MarginLeftSpan>
-                                </div>
-                            </a>
-                            <div className="navbar-item" role="button" onClick={openEmailModal} aria-label="Open Email Modal">
-                                <div className="button is-link is-rounded is-outlined">
-                                    Email
-                                    <MarginLeftSpan className="icon">
-                                        <i className="fas fa-envelope"></i>
-                                    </MarginLeftSpan>
-                                </div>
+                                </Link>
                             </div>
+                        </div>
+                        <div className="navbar-end">
                             {!props.downloadResume &&
                                 <Link className="navbar-item" to="/resume">
-                                    <div className="button is-link is-rounded is-outlined">
+                                    <div className="button is-link is-outlined">
                                         Résumé
-                                        <span className="icon" style={marginLeftStyle}>
+                                        <MarginLeftSpan className="icon">
                                             <i className="fas fa-file"></i>
-                                        </span>
+                                        </MarginLeftSpan>
                                     </div>
                                 </Link>
                             }
                             {props.downloadResume &&
                                 <a className="navbar-item" href={downloadResumeLink}>
-                                    <div className="button is-link is-rounded is-outlined">
+                                    <div className="button is-link is-outlined">
                                         Download Résumé
                                         <span className="icon" style={marginLeftStyle}>
                                             <i className="fas fa-file-download"></i>
@@ -186,12 +164,27 @@ const Navbar = (props) => {
                                     </div>
                                 </a>
                             }
+                            <a className="navbar-item" href="https://github.com/parthsdoshi">
+                                <span className="icon has-text-link">
+                                    <i className="fab fa-github"></i>
+                                </span>
+                            </a>
+                            <a className="navbar-item" href="https://linkedin.com/in/parthsdoshi">
+                                <span className="icon has-text-link">
+                                    <i className="fab fa-linkedin"></i>
+                                </span>
+                            </a>
+                            <a className="navbar-item" role="button" onClick={openEmailModal} aria-label="Open Email Modal">
+                                <span className="icon has-text-link">
+                                    <i className="fas fa-envelope"></i>
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </nav>
             <div className="modal" id="emailModal" ref={emailModal}>
-                <div className="modal-background" role="button" onClick={closeEmailModal} aria-label="Close Email Modal"></div>
+                <div className="modal-background" role="button" onClick={closeEmailModal} aria-label="Close Email Modal" style={{zIndex: "auto"}}/>
                 <div className="modal-card">
                     <header className="modal-card-head">
                         <p className="modal-card-title">Email</p>
@@ -219,7 +212,10 @@ const Navbar = (props) => {
             </div>
             {!props.hideChefNotification && <Link to="/blog">
                 <div className="notification is-link">
-                    While you're here, check out my new blog! It's mostly about food but I also write about my general thoughts. I'd love to hear any ideas/criticism you may have :)
+                    While you're here, click here to check out my new blog!
+                    <p>
+                        I just wrote my first post where I create an LED sign to decorate my room :)
+                    </p>
                 </div>
             </Link>}
         </div>

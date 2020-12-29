@@ -19,9 +19,11 @@ const SiteLogo = () => {
       strapiGlobal {
         defaultSEO {
           shareImage {
-            childImageSharp {
-              fixed(width: 42) {
-                ...GatsbyImageSharpFixed_withWebp_tracedSVG
+            localFile {
+              childImageSharp {
+                fixed(width: 42) {
+                  ...GatsbyImageSharpFixed_withWebp_tracedSVG
+                }
               }
             }
           }
@@ -29,7 +31,7 @@ const SiteLogo = () => {
       }
     }
   `)
-  let image = data.strapiGlobal.defaultSEO.shareImage
+  let image = data.strapiGlobal.defaultSEO.shareImage.localFile
 
   return <Img fixed={image.childImageSharp.fixed} alt="Website Logo" />
 }

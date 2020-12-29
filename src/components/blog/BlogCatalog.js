@@ -19,18 +19,22 @@ const BlogCatalog = () => {
                         author {
                             name
                             picture {
-                                childImageSharp {
-                                    fluid {
-                                        ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                                localFile {
+                                    childImageSharp {
+                                        fluid {
+                                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                                        }
                                     }
                                 }
                             }
                         }
                         slug
                         cover {
-                            childImageSharp {
-                                fluid {
-                                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                            localFile {
+                                childImageSharp {
+                                    fluid {
+                                        ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                                    }
                                 }
                             }
                         }
@@ -54,14 +58,14 @@ const BlogCatalog = () => {
                             <div className="card" style={fullCard}>
                                 <div className="card-image">
                                     <figure className="image">
-                                        <Img fluid={node.cover.childImageSharp.fluid} alt="food-image" />
+                                        <Img fluid={node.cover.localFile.childImageSharp.fluid} alt="food-image" />
                                     </figure>
                                 </div>
                                 <div className="card-content">
                                     <div className="media">
                                         <div className="media-left">
                                             <figure className="image is-48x48">
-                                                <Img fluid={node.author.picture.childImageSharp.fluid} alt="author-image" />
+                                                <Img fluid={node.author.picture.localFile.childImageSharp.fluid} alt="author-image" />
                                             </figure>
                                         </div>
                                         <div className="media-content">

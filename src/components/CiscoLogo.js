@@ -18,16 +18,18 @@ const CiscoLogo = () => {
     query {
       strapiWorkExperience(slug: {eq: "cisco"}) {
         logo {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              }
             }
           }
         }
       }
     }
   `)
-  let image = data.strapiWorkExperience.logo
+  let image = data.strapiWorkExperience.logo.localFile
 
   return <Img fluid={image.childImageSharp.fluid} alt="A picture of Cisco's logo." />
 }

@@ -11,7 +11,7 @@ import NavbarFooter from "../components/NavbarFooter";
 const IndexPage = () => (
   <NavbarFooter>
     <SEO title="Home" />
-    <PaddedSection>
+    <PaddedSection paddingTop="0">
       <Header />
     </PaddedSection>
     <HR />
