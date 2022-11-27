@@ -49,8 +49,8 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `https://parth-personal-website-strapi.herokuapp.com`,
-        queryLimit: 1000, // Default to 100
+        apiURL: `https://parthdoshi-strapi.azurewebsites.net`,
+        queryLimit: 1000,
         contentTypes: [`article`, `category`, `writer`, `work-experience`],
         singleTypes: [`global`, `home`, `blog`],
       },
