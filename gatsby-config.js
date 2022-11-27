@@ -50,7 +50,7 @@ module.exports = {
       resolve: `gatsby-source-strapi`,
       options: {
         apiURL: `https://parthdoshi-strapi.azurewebsites.net`,
-        queryLimit: 1000, // Default to 100
+        queryLimit: 1000,
         contentTypes: [`article`, `category`, `writer`, `work-experience`],
         singleTypes: [`global`, `home`, `blog`],
       },
