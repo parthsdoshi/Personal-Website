@@ -20,7 +20,7 @@
     "gatsby-source-filesystem": "^2.3.34",
     "gatsby-source-strapi": "https://github.com/parthsdoshi/gatsby-source-strapi.git#987dcdd9ca5c48fa48b7308d4c6af426d2d31edd",
     "gatsby-transformer-json": "^2.4.14",
-    "gatsby-transformer-remark": "^2.8.38",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.5.17",
     "gatsby-transformer-video": "^0.2.1",
     "node-sass": "^4.14.1",
